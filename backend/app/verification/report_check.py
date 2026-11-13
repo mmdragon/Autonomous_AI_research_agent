@@ -24,7 +24,15 @@ from app.verification.markdown import md, squash, unmd
 
 _REF = re.compile(r"(?<!\\)\[(\d+)\]")
 _QUOTE = re.compile(r"“((?:\\.|[^”\\])*)”((?:\s*(?<!\\)\[\d+\])*)")
-_LINK = re.compile(r"(?<!\\)\]\(|(?<!\\)<(?:https?:|/|[a-zA-Z][\w-]*[\s>/])")
+# Markdown links, autolinks and HTML tags, plus bare URLs/emails that GFM would autolink.
+_LINK = re.compile(
+    r"(?<!\\)\]\("
+    r"|(?<!\\)<(?:https?:|/|[a-zA-Z][\w-]*[\s>/])"
+    r"|[A-Za-z]://"
+    r"|(?<![\w.\\])www\.\w"
+    r"|\w(?<!\\)@\w",
+    re.IGNORECASE,
+)
 _URL_IN_LINE = re.compile(r"<([a-z][a-z0-9+.-]*://[^>\s]+)>")
 _NUMBERED = re.compile(r"^(\d+)\. ")
 _POSTED = re.compile(r"\bposted (\d{4}-\d{2}-\d{2})\b")

@@ -2,54 +2,50 @@
 
 import { useEffect, useState } from "react";
 
-import { API_BASE_URL, getHealth, type Health } from "@/lib/api";
+import { api, type Health } from "@/lib/api";
 
-type State =
-  | { kind: "loading" }
-  | { kind: "ok"; health: Health }
-  | { kind: "error"; message: string };
+type State = { kind: "loading" } | { kind: "ok"; health: Health } | { kind: "error" };
 
+/** Compact header indicator: API reachable, and whether sources are offline fixtures. */
 export function BackendStatus() {
   const [state, setState] = useState<State>({ kind: "loading" });
 
   useEffect(() => {
     const controller = new AbortController();
-    getHealth(controller.signal)
+    api
+      .health(controller.signal)
       .then((health) => setState({ kind: "ok", health }))
-      .catch((err: unknown) => {
-        if (controller.signal.aborted) return;
-        setState({ kind: "error", message: err instanceof Error ? err.message : String(err) });
+      .catch(() => {
+        if (!controller.signal.aborted) setState({ kind: "error" });
       });
     return () => controller.abort();
   }, []);
 
+  if (state.kind === "loading") {
+    return <p className="text-xs text-zinc-500" aria-live="polite">Checking API…</p>;
+  }
+  if (state.kind === "error") {
+    return (
+      <p role="alert" className="text-xs font-medium text-red-700 dark:text-red-400">
+        API unreachable — start the backend
+      </p>
+    );
+  }
+  const { health } = state;
+  const offline = health.sources_mode === "fixtures";
   return (
-    <section
-      aria-live="polite"
-      aria-busy={state.kind === "loading"}
-      className="rounded-lg border border-zinc-200 p-4 dark:border-zinc-800"
-    >
-      <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-zinc-500">
-        Backend status
-      </h2>
-      {state.kind === "loading" && <p>Checking {API_BASE_URL}…</p>}
-      {state.kind === "error" && (
-        <p role="alert" className="text-red-700 dark:text-red-400">
-          Can&apos;t reach the API at {API_BASE_URL}. Start the backend and reload. ({state.message})
-        </p>
-      )}
-      {state.kind === "ok" && (
-        <dl className="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1 text-sm">
-          <dt className="text-zinc-500">API</dt>
-          <dd>{state.health.status}</dd>
-          <dt className="text-zinc-500">Database</dt>
-          <dd>{state.health.database}</dd>
-          <dt className="text-zinc-500">LLM provider</dt>
-          <dd>{state.health.llm_provider}</dd>
-          <dt className="text-zinc-500">Sources</dt>
-          <dd>{state.health.sources_mode}</dd>
-        </dl>
-      )}
-    </section>
+    <p className="flex items-center gap-2 text-xs text-zinc-600 dark:text-zinc-400" aria-live="polite">
+      <span
+        aria-hidden
+        className={`h-2 w-2 rounded-full ${health.database === "ok" ? "bg-emerald-500" : "bg-red-500"}`}
+      />
+      <span>
+        {offline ? "Offline" : "Live"}
+        <span className="hidden sm:inline">
+          {offline ? " (recorded sources)" : " sources"} · analysis: {health.llm_provider}
+        </span>
+        {health.database !== "ok" && " · database unavailable"}
+      </span>
+    </p>
   );
 }

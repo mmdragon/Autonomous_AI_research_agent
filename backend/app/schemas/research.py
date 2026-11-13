@@ -59,6 +59,9 @@ class ResearchRequest(BaseModel):
     entities: list[Name] = Field(default_factory=list, max_length=8)
     attributes: list[Name] = Field(default_factory=list, max_length=6)
     user_urls: list[AnyHttpUrl] = Field(default_factory=list, max_length=5)
+    document_ids: list[Annotated[str, StringConstraints(pattern=r"^[0-9a-f]{32}$")]] = Field(
+        default_factory=list, max_length=5
+    )
     max_sources: int = Field(default=15, ge=1, le=25)
     output_format: Literal["markdown"] = "markdown"
 
@@ -75,8 +78,8 @@ class ResearchRequest(BaseModel):
 
 
 class ToolQuery(BaseModel):
-    tool: Literal["wikipedia", "hackernews", "user_url"]
-    query: str  # search text, or the URL for user_url
+    tool: Literal["wikipedia", "hackernews", "user_url", "document"]
+    query: str  # search text; the URL for user_url; the document id for document
 
 
 class ResearchQuestion(BaseModel):
@@ -182,6 +185,15 @@ class RunDetail(RunSummary):
     sources: list[SourceOut]
     claims: list[Claim]
     has_report: bool
+
+
+class DocumentOut(BaseModel):
+    id: str
+    filename: str
+    size_bytes: int
+    content_hash: str
+    excerpt: str
+    created_at: datetime
 
 
 class ReportOut(BaseModel):

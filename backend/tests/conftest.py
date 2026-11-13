@@ -12,7 +12,6 @@ def settings(tmp_path) -> Settings:
     return Settings(
         _env_file=None,
         database_path=tmp_path / "test.sqlite3",
-        upload_dir=tmp_path / "uploads",
         sources_mode="fixtures",
     )
 

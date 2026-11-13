@@ -46,6 +46,10 @@ def _detail(repo: RunRepository, run_id: str) -> RunDetail:
 def create_run(
     request: ResearchRequest, background: BackgroundTasks, repo: RepoDep, settings: SettingsDep
 ) -> RunDetail:
+    if missing := repo.missing_documents(request.document_ids):
+        raise HTTPException(
+            status.HTTP_422_UNPROCESSABLE_CONTENT, f"Unknown document id(s): {', '.join(missing)}"
+        )
     run_id = repo.create_run(request)
     background.add_task(run_workflow, settings, run_id)
     return _detail(repo, run_id)

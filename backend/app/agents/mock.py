@@ -98,6 +98,8 @@ class MockPlanner:
             add("hackernews", text)
         for url in request.user_urls:
             add("user_url", str(url))
+        for document_id in request.document_ids:
+            add("document", document_id)
         return ResearchPlan(questions=questions, queries=queries)
 
 

@@ -30,7 +30,8 @@ def test_search_maps_hits_to_discussion_records(hn):
 def test_search_decodes_story_html_and_drops_usernames(hn):
     ask = hn.search("headless cms", 2)[1]
     assert 'We are a team of three & need "simple" hosting.' in ask.content
-    dumped = ask.model_dump_json()
+    # Random ids and hashes are hex, so only check fields that can carry source data.
+    dumped = ask.model_dump_json(exclude={"id", "content_hash"})
     assert "another" not in dumped and "someone" not in dumped
 
 
@@ -39,7 +40,7 @@ def test_fetch_includes_bounded_live_comments(hn):
     assert record.published_at == datetime.fromtimestamp(1711929600, UTC)
     assert "Comment:\nWe use Example CMS Beta.\n\nIts GraphQL API is fine." in record.content
     assert record.metadata["comments_included"] == 2  # the deleted comment is skipped
-    assert "c1" not in record.model_dump_json()
+    assert "c1" not in record.model_dump_json(exclude={"id", "content_hash"})
 
 
 def test_injected_instructions_stay_inert_data(hn):

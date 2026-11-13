@@ -1,3 +1,4 @@
+import re
 from datetime import UTC, datetime
 
 import pytest
@@ -180,3 +181,21 @@ def test_claims_expose_source_ids():
     expected = list(dict.fromkeys(s.source_record_id for s in with_spans.spans))
     assert with_spans.source_record_ids == expected
     assert with_spans.model_dump()["source_record_ids"] == expected
+
+
+def test_escaping_blocks_autolinks_and_round_trips():
+    from app.verification.markdown import md, unmd
+
+    text = "See https://directus.io/ or www.example.com, mail me@x.io. Ratio 1:2 // ok \\. done"
+    escaped = md(text)
+    assert not re.search(r"[A-Za-z]://", escaped)
+    assert "www." not in escaped and "e@x" not in escaped
+    assert unmd(escaped) == text
+
+
+def test_bare_urls_and_emails_in_body_are_rejected():
+    for bare in ("https://evil.test/x", "www.evil.test", "someone@evil.test"):
+        problems = problems_after(
+            lambda r, b=bare: r.replace("## Findings\n", f"## Findings\n{b}\n")
+        )
+        assert any("link or HTML" in p for p in problems), bare

@@ -4,10 +4,10 @@ A local-first research assistant. It takes a scoped research task, plans the ste
 public sources (Wikipedia, Hacker News, URLs and documents you provide), maps claims to stored
 evidence, flags gaps and conflicts, and writes a Markdown report with source links.
 
-Status: **Phase 4 (evidence and verification)**. Research runs execute end to end over the API
-in mock mode, offline by default; claims are verified against stored evidence, contradictions
-between sources are detected, and a report is only saved if it passes an evidence check. The
-research UI comes in Phase 5. See [docs/PLAN.md](docs/PLAN.md).
+Status: **Phase 5 (frontend)**. Submit a research task in the browser, watch the plan and
+stages run, and review the comparison matrix, findings, unknowns, conflicts, sources, report and
+activity log. Runs work offline by default (recorded sources, mock analysis). See
+[docs/PLAN.md](docs/PLAN.md).
 
 ## Stack
 
@@ -33,7 +33,27 @@ echo "NEXT_PUBLIC_API_BASE_URL=http://localhost:8000" > .env.local
 npm run dev
 ```
 
-Open http://localhost:3000. The page shows whether the API and database are reachable.
+Open http://localhost:3000 and use **Load example** for the recorded headless-CMS task.
+
+## Using the app
+
+- **New research task** (home page): topic, entities and attributes (the comparison matrix),
+  other questions, URLs to read, `.txt`/`.md` documents, number of sources. Inputs are checked
+  in the browser and again by the API.
+- **Run page** (`/runs/{id}`): updates every 1.5 s while the run is active.
+  - *Progress*: the five stages with their summaries and errors; a failed run shows **Resume**.
+  - *Plan*: research questions and the source queries chosen.
+  - *Comparison*: entity × attribute matrix (Supported / Community only / Conflicting / Unknown)
+    with citations to the Sources list.
+  - *Findings*, *Unknowns and gaps*, *Conflicts*: claims with their verbatim evidence.
+  - *Sources*: every retrieved source with kind, retrieval and posting dates, license, excerpt.
+  - *Report*: rendered or raw Markdown, **Copy Markdown**, **Download .md**. Raw HTML and images
+    are never rendered, and only links to this run's stored sources are clickable.
+  - *Activity log*: every tool call with status, result count, HTTP requests and duration.
+- **Run history** on the home page lists past runs, newest first.
+
+Uploaded documents and URLs you add are stored before search results, so the source limit never
+drops them.
 
 The database is created at `backend/data/research.sqlite3` on first start. Delete that folder to reset.
 
@@ -130,7 +150,8 @@ curl -s localhost:8000/api/runs/<id>/report.md
 | Method | Path | Description |
 |---|---|---|
 | GET | `/api/health` | API status, database status, LLM provider, sources mode |
-| POST | `/api/runs` | Start a run (202). Body: `topic`, optional `entities` (≤8), `attributes` (≤6), `questions` (≤5), `user_urls` (≤5), `max_sources` (1–25) |
+| POST | `/api/documents` | Upload a `.txt`/`.md` file (multipart `file`, ≤1 MB); returns its `id` |
+| POST | `/api/runs` | Start a run (202). Body: `topic`, optional `entities` (≤8), `attributes` (≤6), `questions` (≤5), `user_urls` (≤5), `document_ids` (≤5), `max_sources` (1–25) |
 | GET | `/api/runs` | Run history, newest first |
 | GET | `/api/runs/{id}` | Status, plan, steps, sources (excerpts, no full text), claims with evidence spans |
 | GET | `/api/runs/{id}/tool-calls` | Activity log |
@@ -144,7 +165,7 @@ Interactive docs: http://localhost:8000/docs
 
 ```bash
 cd backend && uv run pytest && uv run ruff check . && uv run ruff format --check .
-cd frontend && npm run lint && npm run build
+cd frontend && npx tsc --noEmit && npm run lint && npm run build
 ```
 
 ## Data model
@@ -170,9 +191,11 @@ quotes text that really appears in a stored source.
   For the demo task most cells end up *Unknown* or *community only*. That's the honest result
   for what Wikipedia and Hacker News actually say, not a bug.
 - Runs execute in-process (FastAPI background tasks); there is no job queue.
-- The recorded demo task has no cross-source conflicts: each product fact comes from at most one
-  Wikipedia article. Conflicts show up when you add your own URLs; document upload isn't exposed
-  over the API yet.
+- The recorded demo task has no cross-source conflicts on its own: each product fact comes from
+  at most one Wikipedia article. Add a document or URL that disagrees (for example a note saying
+  "Contentful was founded in 2011") to see one.
+- The report numbers citations in citation order; the run page numbers sources in list order.
+  Each view's `[n]` refers to its own source list.
 - No general web search: only Wikipedia, Hacker News, and URLs/documents you supply.
 - Recorded fixtures cover one headless-CMS task (Wikipedia: headless CMS, headless content
   management system, Strapi, Contentful, Sanity CMS, Directus, Payload CMS; HN: headless CMS,

@@ -7,7 +7,7 @@ from collections.abc import Iterator
 from contextlib import contextmanager
 from pathlib import Path
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 
 # Timestamps are ISO-8601 UTC strings. JSON-ish fields are stored as TEXT.
 _SCHEMA = """
@@ -96,6 +96,16 @@ CREATE TABLE IF NOT EXISTS evidence_spans (
     stance           TEXT NOT NULL        -- supports | contradicts
 );
 CREATE INDEX IF NOT EXISTS idx_spans_claim ON evidence_spans (claim_id);
+
+-- User-uploaded documents (text/Markdown), referenced by runs through document_ids.
+CREATE TABLE IF NOT EXISTS documents (
+    id           TEXT PRIMARY KEY,
+    filename     TEXT NOT NULL,
+    content_hash TEXT NOT NULL,
+    size_bytes   INTEGER NOT NULL,
+    data         BLOB NOT NULL,           -- original bytes; re-validated when a run loads them
+    created_at   TEXT NOT NULL
+);
 
 CREATE TABLE IF NOT EXISTS reports (
     id         TEXT PRIMARY KEY,

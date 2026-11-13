@@ -28,7 +28,8 @@ from app.schemas.research import (
     VerificationStatus,
     WorkflowState,
 )
-from app.sources.http import BlockedError, SourceError
+from app.sources.documents import load_document
+from app.sources.http import BlockedError, PermanentSourceError, SourceError
 from app.sources.models import SourceRecord
 from app.sources.registry import SourceTools
 from app.verification.conflicts import detect_conflicts
@@ -38,6 +39,7 @@ from app.verification.verifier import verify_claims
 log = logging.getLogger(__name__)
 
 MAX_REPORT_CHARS = 200_000
+USER_TOOLS = frozenset({"user_url", "document"})
 
 
 class WorkflowLimitError(Exception):
@@ -137,7 +139,7 @@ class WorkflowEngine:
         if not plan.queries:
             raise StageError("The plan has no source queries")
         state.plan = plan
-        return f"{len(plan.questions)} questions, {len(plan.queries)} source queries"
+        return f"{_count(plan.questions, 'question')}, {_count(plan.queries, 'source query')}"
 
     def _research(self, run_id, step_id, request: ResearchRequest, state: WorkflowState) -> str:
         plan = _require_plan(state)
@@ -145,7 +147,10 @@ class WorkflowEngine:
         per_query = self.settings.max_sources_per_question
         results: list[list[SourceRecord]] = []
         failures = 0
-        for query in plan.queries:
+        # Sources the user supplied (URLs, documents) are stored first, so the source
+        # limit never crowds them out with search results.
+        user_first = sorted(plan.queries, key=lambda q: q.tool not in USER_TOOLS)
+        for query in user_first:
             records = self._run_query(run_id, step_id, query, per_query)
             if records is None:
                 failures += 1
@@ -185,6 +190,14 @@ class WorkflowEngine:
                 lambda: [self.tools.user_url.fetch(query.query)],
             )
             return record
+        if query.tool == "document":
+            return self._tool_call(
+                run_id,
+                step_id,
+                "document.load",
+                query.query,
+                lambda: [self._load_document(query.query)],
+            )
         source = self.tools.wikipedia if query.tool == "wikipedia" else self.tools.hackernews
         records = self._tool_call(
             run_id,
@@ -243,6 +256,13 @@ class WorkflowEngine:
         )
         return result
 
+    def _load_document(self, document_id: str) -> SourceRecord:
+        stored = self.repo.get_document(document_id)
+        if stored is None:
+            raise PermanentSourceError(f"Document {document_id} not found")
+        filename, data = stored
+        return load_document(filename, data, max_bytes=self.settings.max_upload_bytes)
+
     def _analyze(self, run_id, step_id, request: ResearchRequest, state: WorkflowState) -> str:
         plan = _require_plan(state)
         sources = self.repo.list_sources(run_id)
@@ -286,6 +306,11 @@ class WorkflowEngine:
             f"Markdown report, {len(markdown)} characters; evidence check passed "
             f"({check.quotes} quotes, {check.citations} citations)"
         )
+
+
+def _count(items: list, noun: str) -> str:
+    plural = noun[:-1] + "ies" if noun.endswith("y") else noun + "s"
+    return f"{len(items)} {noun if len(items) == 1 else plural}"
 
 
 def _require_plan(state: WorkflowState) -> ResearchPlan:

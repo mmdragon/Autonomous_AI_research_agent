@@ -10,6 +10,7 @@ from uuid import uuid4
 from app.repositories.db import transaction
 from app.schemas.research import (
     Claim,
+    DocumentOut,
     EvidenceSpan,
     ReportOut,
     ResearchRequest,
@@ -24,6 +25,7 @@ from app.schemas.research import (
     WorkflowState,
 )
 from app.sources.models import SourceRecord
+from app.sources.text import make_excerpt
 
 
 def now_iso() -> str:
@@ -350,6 +352,47 @@ class RunRepository:
             for r in claim_rows
         ]
 
+    # --- documents ---
+
+    def save_document(self, record: SourceRecord, filename: str, data: bytes) -> DocumentOut:
+        """Store an uploaded document (already validated). Same bytes → same document."""
+        with transaction(self.path) as conn:
+            row = conn.execute(
+                "SELECT * FROM documents WHERE content_hash = ? AND filename = ?",
+                (record.content_hash, filename),
+            ).fetchone()
+            if row is None:
+                conn.execute(
+                    "INSERT INTO documents (id, filename, content_hash, size_bytes, data,"
+                    " created_at) VALUES (?, ?, ?, ?, ?, ?)",
+                    (new_id(), filename, record.content_hash, len(data), data, now_iso()),
+                )
+                row = conn.execute(
+                    "SELECT * FROM documents WHERE content_hash = ? AND filename = ?",
+                    (record.content_hash, filename),
+                ).fetchone()
+        return _document(row)
+
+    def get_document(self, document_id: str) -> tuple[str, bytes] | None:
+        with transaction(self.path) as conn:
+            row = conn.execute(
+                "SELECT filename, data FROM documents WHERE id = ?", (document_id,)
+            ).fetchone()
+        return (row["filename"], bytes(row["data"])) if row else None
+
+    def missing_documents(self, document_ids: list[str]) -> list[str]:
+        if not document_ids:
+            return []
+        marks = ",".join("?" for _ in document_ids)
+        with transaction(self.path) as conn:
+            found = {
+                r["id"]
+                for r in conn.execute(
+                    f"SELECT id FROM documents WHERE id IN ({marks})", tuple(document_ids)
+                )
+            }
+        return [d for d in document_ids if d not in found]
+
     # --- reports ---
 
     def save_report(self, run_id: str, markdown: str) -> str:
@@ -369,6 +412,18 @@ class RunRepository:
                 (run_id,),
             ).fetchone()
         return ReportOut.model_validate(dict(row)) if row else None
+
+
+def _document(row: sqlite3.Row) -> DocumentOut:
+    text = bytes(row["data"]).decode("utf-8-sig", errors="replace")
+    return DocumentOut(
+        id=row["id"],
+        filename=row["filename"],
+        size_bytes=row["size_bytes"],
+        content_hash=row["content_hash"],
+        excerpt=make_excerpt(" ".join(text.split()), 200),
+        created_at=row["created_at"],
+    )
 
 
 def _summary(row: sqlite3.Row) -> RunSummary:

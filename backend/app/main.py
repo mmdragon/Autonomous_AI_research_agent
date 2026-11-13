@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import health, runs
+from app.api import documents, health, runs
 from app.config import Settings, get_settings
 from app.repositories.db import init_db
 from app.repositories.runs import RunRepository
@@ -35,6 +35,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.dependency_overrides[get_settings] = lambda: settings
     app.include_router(health.router, prefix="/api")
     app.include_router(runs.router, prefix="/api")
+    app.include_router(documents.router, prefix="/api")
     return app
 
 

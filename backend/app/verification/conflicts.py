@@ -24,6 +24,12 @@ from app.sources.models import SourceKind
 from app.verification.sentences import entity_patterns, iter_sentences
 
 MAX_CORROBORATING = 2
+KIND_RANK = {
+    SourceKind.REFERENCE: 0,
+    SourceKind.USER_URL: 1,
+    SourceKind.DOCUMENT: 1,
+    SourceKind.COMMUNITY: 2,
+}
 _YEAR = r"\b(1[89]\d\d|20\d\d)\b"
 
 _NOT_OPEN = re.compile(
@@ -90,7 +96,8 @@ class Observation:
 
     @property
     def rank(self) -> int:
-        return 1 if self.source.source_kind is SourceKind.COMMUNITY else 0
+        """Which side states the claim: reference, then user URL/document, then community."""
+        return KIND_RANK[self.source.source_kind]
 
 
 def _span(obs: Observation, stance: str) -> EvidenceSpan:

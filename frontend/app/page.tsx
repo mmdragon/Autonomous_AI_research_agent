@@ -1,16 +1,21 @@
-import { BackendStatus } from "@/components/BackendStatus";
+import { ResearchForm } from "@/components/ResearchForm";
+import { RunHistory } from "@/components/RunHistory";
 
 export default function Home() {
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-6 px-4 py-12">
+    <div className="space-y-6">
       <header>
         <h1 className="text-2xl font-semibold tracking-tight">Research Agent</h1>
-        <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+        <p className="mt-1 max-w-3xl text-zinc-600 dark:text-zinc-400">
           Plans a research task, retrieves public sources, and writes a cited report. Every
-          finding links to stored evidence; anything unverified is marked unknown.
+          finding quotes stored evidence; anything unverified is marked unknown, and conflicts
+          between sources are flagged.
         </p>
       </header>
-      <BackendStatus />
-    </main>
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+        <ResearchForm />
+        <RunHistory />
+      </div>
+    </div>
   );
 }

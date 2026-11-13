@@ -13,7 +13,6 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=BACKEND_ROOT / ".env", extra="ignore")
 
     database_path: Path = BACKEND_ROOT / "data" / "research.sqlite3"
-    upload_dir: Path = BACKEND_ROOT / "data" / "uploads"
     cors_origins: list[str] = ["http://localhost:3000"]
 
     # Only "mock" is implemented. No paid model API is called.
@@ -36,6 +35,7 @@ class Settings(BaseSettings):
     max_run_seconds: int = 300
     max_tool_calls_per_run: int = 60
     max_fetch_bytes: int = 2 * 1024 * 1024
+    max_upload_bytes: int = 1024 * 1024
 
 
 @lru_cache
