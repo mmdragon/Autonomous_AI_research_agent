@@ -4,8 +4,10 @@ A local-first research assistant. It takes a scoped research task, plans the ste
 public sources (Wikipedia, Hacker News, URLs and documents you provide), maps claims to stored
 evidence, flags gaps and conflicts, and writes a Markdown report with source links.
 
-Status: **Phase 3 (workflow engine)**. Research runs execute end to end over the API in mock
-mode, offline by default. The research UI comes in Phase 5. See [docs/PLAN.md](docs/PLAN.md).
+Status: **Phase 4 (evidence and verification)**. Research runs execute end to end over the API
+in mock mode, offline by default; claims are verified against stored evidence, contradictions
+between sources are detected, and a report is only saved if it passes an evidence check. The
+research UI comes in Phase 5. See [docs/PLAN.md](docs/PLAN.md).
 
 ## Stack
 
@@ -72,9 +74,42 @@ saved after every completed stage, so a failed run resumes from the stage that f
 |---|---|
 | plan | One question per entity × attribute, plus your free-form questions; deduplicated Wikipedia / HN / URL queries |
 | research | Search each query, fetch the top result in full, store sources round-robin across queries (dedupe by URL and content hash) |
-| analyze | Purely extractive: copies sentences that name the entity and match the attribute's keywords, with exact offsets. Nothing found → an explicit unknown |
-| verify | Drops any span whose quote isn't at those offsets in the stored source. *Supported* needs a non-community source; Hacker News only → unknown |
-| write | Markdown with comparison matrix, findings, unknowns, conflicts, and a source list built only from stored records |
+| analyze | Purely extractive: copies sentences that name the entity and match the attribute's keywords, with exact offsets. Nothing found → an explicit unknown. Then rule-based conflict detection across sources (see below) |
+| verify | Marks each claim supported / contradicted / unknown (rules below) |
+| write | Markdown with summary, comparison matrix, findings, unknowns, conflicts and a source list built only from stored records, then the report evidence check |
+
+## Evidence and verification
+
+Every claim carries evidence spans: `source_record_id`, the verbatim `quote`, its character
+offsets in the stored source text, and a stance (`supports` / `contradicts`). Claims also list
+their `source_record_ids`.
+
+**Verifier** ([verifier.py](backend/app/verification/verifier.py)), in order:
+1. A span is valid only if its source is in this run and the quote is exactly the stored text at
+   those offsets. Invalid spans are dropped and noted.
+2. The claim text must be stated in a valid supporting quote, or the claim is **unknown**.
+3. A contradicting span from a reference, user URL or document → **contradicted**.
+4. A supporting span from a reference, user URL or document → **supported** (a Hacker News
+   contradiction adds a "disputed in community discussion" note).
+5. Hacker News evidence alone → **unknown** (community opinion, not verification).
+
+**Conflict detection** ([conflicts.py](backend/app/verification/conflicts.py)) compares narrow,
+comparable facts stated about each entity across different sources: license model (open source
+vs proprietary, with negation), founding year, initial release year and headquarters. A
+disagreement becomes one claim with both quotes. Values that legitimately vary, like prices
+across plans, are not compared.
+
+**Report evidence check** ([report_check.py](backend/app/verification/report_check.py)) runs on
+every generated report before it is saved. It rejects the report (the write stage fails, the
+run can be resumed) if any of these is true:
+- a `[n]` citation has no listed source
+- a listed URL isn't a stored source
+- a source line shows a "posted" date the source doesn't state
+- a quote isn't verbatim evidence from the cited source
+- a finding isn't a supported claim, or a "Supported" matrix cell lacks matching evidence
+- the body contains links or HTML
+
+This is independent of the writer, so it also guards a future LLM writer.
 
 **Limits** (backend/.env): `MAX_STEPS_PER_RUN`, `MAX_TOOL_CALLS_PER_RUN`, `MAX_SOURCES_PER_QUESTION`,
 `MAX_SOURCES_PER_RUN`, `MAX_RUN_SECONDS`, plus per-request `max_sources`. Hitting one fails the run
@@ -131,10 +166,13 @@ quotes text that really appears in a stored source.
 ## Limitations
 
 - The mock analyst only finds sentences that literally name an entity and an attribute keyword;
-  it does not summarize, paraphrase or detect contradictions (Phase 4 adds contradiction checks).
+  it does not summarize or paraphrase. Conflict detection only covers the four facts above.
   For the demo task most cells end up *Unknown* or *community only*. That's the honest result
   for what Wikipedia and Hacker News actually say, not a bug.
 - Runs execute in-process (FastAPI background tasks); there is no job queue.
+- The recorded demo task has no cross-source conflicts: each product fact comes from at most one
+  Wikipedia article. Conflicts show up when you add your own URLs; document upload isn't exposed
+  over the API yet.
 - No general web search: only Wikipedia, Hacker News, and URLs/documents you supply.
 - Recorded fixtures cover one headless-CMS task (Wikipedia: headless CMS, headless content
   management system, Strapi, Contentful, Sanity CMS, Directus, Payload CMS; HN: headless CMS,

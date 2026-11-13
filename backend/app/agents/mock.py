@@ -8,7 +8,6 @@ put words in a source's mouth. When nothing matches, it records an explicit unkn
 from __future__ import annotations
 
 import re
-from collections.abc import Iterator
 from datetime import UTC, datetime
 from uuid import uuid4
 
@@ -23,10 +22,11 @@ from app.schemas.research import (
     VerificationStatus,
 )
 from app.sources.models import SourceKind
+from app.verification.conflicts import SLOTS
+from app.verification.markdown import md
+from app.verification.sentences import entity_patterns, iter_sentences
 
 OVERVIEW = "overview"
-MAX_SENTENCE_CHARS = 400
-MIN_SENTENCE_CHARS = 20
 CLAIMS_PER_CELL = 2
 CLAIMS_PER_QUESTION = 3
 
@@ -102,40 +102,6 @@ class MockPlanner:
 
 
 # --- analyst ---
-
-
-_SENTENCE_BREAK = re.compile(r"(?<=[.!?])\s+|\n+")
-
-
-def iter_sentences(text: str) -> Iterator[tuple[int, int]]:
-    """Yield (start, end) offsets of sentence-like spans, trimmed of whitespace.
-
-    A sentence ends at . ! or ? followed by whitespace, or at a line break, so "Node.js"
-    and URLs stay intact. Abbreviations like "Inc." still split; acceptable for a mock.
-    """
-    pos = 0
-    for brk in [*_SENTENCE_BREAK.finditer(text), None]:
-        start, end = pos, (brk.start() if brk else len(text))
-        pos = brk.end() if brk else len(text)
-        while start < end and text[start].isspace():
-            start += 1
-        while end > start and text[end - 1].isspace():
-            end -= 1
-        segment = text[start:end]
-        if segment.startswith("=") or not (
-            MIN_SENTENCE_CHARS <= len(segment) <= MAX_SENTENCE_CHARS
-        ):
-            continue  # Wikipedia section headings, fragments, run-ons
-        yield start, end
-
-
-def entity_patterns(entity: str) -> list[re.Pattern[str]]:
-    patterns = [re.compile(rf"(?<!\w){re.escape(entity)}(?!\w)", re.IGNORECASE)]
-    short = re.sub(r"\s+(cms|headless cms)$", "", entity, flags=re.IGNORECASE)
-    if short != entity and len(short) >= 3:
-        # The bare product name must match case-sensitively ("Sanity", not "sanity").
-        patterns.append(re.compile(rf"(?<!\w){re.escape(short)}(?!\w)"))
-    return patterns
 
 
 def attribute_keywords(attribute: str) -> list[str]:
@@ -265,14 +231,7 @@ def _extractive_claim(
 
 # --- writer ---
 
-# Enough to stop links, images, HTML, emphasis and table breaks in quoted source text.
-_MD_SPECIAL = re.compile(r"([\\`*_\[\]<>|~])")
-
-
-def md(text: str) -> str:
-    """Escape source text so it renders literally (no links, images, HTML or tables)."""
-    return _MD_SPECIAL.sub(r"\\\1", " ".join(text.split()))
-
+CONFLICT_SLOTS = [slot.label for slot in SLOTS]
 
 STATUS_LABEL = {
     VerificationStatus.SUPPORTED: "Supported",
@@ -302,14 +261,26 @@ class MockWriter:
                     refs.append(f"[{n}]")
             return "".join(dict.fromkeys(refs))
 
-        supported = [c for c in claims if c.verification_status is VerificationStatus.SUPPORTED]
-        conflicts = [c for c in claims if c.verification_status is VerificationStatus.CONTRADICTED]
-        unknown = [c for c in claims if c.verification_status is VerificationStatus.UNKNOWN]
+        def cite_source(source_id: str) -> str:
+            return f"[{numbers.setdefault(source_id, len(numbers) + 1)}]"
+
+        def stated_span(claim: Claim):
+            """The supporting span whose quote states the claim text, if any."""
+            for span in claim.spans:
+                if span.stance == "supports" and claim.claim_text in span.quote:
+                    return span
+            return None
+
+        # Claims with a contradicting span are reported only under Conflicts.
+        conflicts = [c for c in claims if any(s.stance == "contradicts" for s in c.spans)]
+        rest = [c for c in claims if c not in conflicts]
+        supported = [c for c in rest if c.verification_status is VerificationStatus.SUPPORTED]
+        unknown = [c for c in rest if c.verification_status is VerificationStatus.UNKNOWN]
         generated = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
 
         out = [f"# Research report: {md(request.topic)}", ""]
         out.append(
-            f"Generated {generated} · Sources mode: {context.get('sources_mode', '?')} · "
+            f"Generated {generated} · Sources mode: {md(context.get('sources_mode', '?'))} · "
             "Analysis: mock (extractive; no model inference)"
         )
         out += [
@@ -322,7 +293,9 @@ class MockWriter:
         out += ["## Research questions", ""]
         out += [f"{i}. {md(q.text)}" for i, q in enumerate(plan.questions, 1)] + [""]
 
+        summary_at = len(out)  # filled in once citations are numbered
         attributes = request.attributes or ["overview"]
+        cell_labels: list[str] = []
         if request.entities:
             out += ["## Comparison matrix", ""]
             out.append("| Entity | " + " | ".join(md(a) for a in attributes) + " |")
@@ -330,8 +303,9 @@ class MockWriter:
             for entity in request.entities:
                 cells = []
                 for attribute in attributes:
-                    cell = [c for c in claims if c.entity == entity and c.attribute == attribute]
+                    cell = [c for c in rest if c.entity == entity and c.attribute == attribute]
                     cells.append(self._cell(cell, cite))
+                cell_labels += cells
                 out.append(f"| {md(entity)} | " + " | ".join(cells) + " |")
             out += [
                 "",
@@ -351,18 +325,57 @@ class MockWriter:
         if not unknown:
             out += ["None.", ""]
         for c in unknown:
-            refs = cite(c)
             note = f" — {md(c.notes)}" if c.notes else ""
-            text = f"“{md(c.claim_text)}” {refs}" if c.spans else md(c.claim_text)
+            span = stated_span(c)
+            if span is not None:
+                text = f"“{md(c.claim_text)}” {cite_source(span.source_record_id)}"
+            elif c.spans:  # evidence doesn't state it: never shown as a quote
+                text = f"Unverified: {md(c.claim_text)}"
+            else:
+                text = md(c.claim_text)
             out.append(f"- {text}{note}")
         out.append("")
 
         out += ["## Conflicts", ""]
-        if conflicts:
-            out += [f"- {md(c.claim_text)} {cite(c)} — {md(c.notes or '')}" for c in conflicts]
-        else:
-            out.append("None detected. (The mock analyst does not search for contradictions yet.)")
+        if not conflicts:
+            out.append("None detected. Compared across sources: " + ", ".join(CONFLICT_SLOTS) + ".")
+        for c in conflicts:
+            label = {
+                VerificationStatus.CONTRADICTED: "Sources disagree",
+                VerificationStatus.SUPPORTED: "Supported; disputed in community discussion",
+            }.get(c.verification_status, "Unverified; sources disagree")
+            says = "; ".join(
+                f"“{md(s.quote)}” {cite_source(s.source_record_id)}"
+                for s in c.spans
+                if s.stance == "supports"
+            )
+            against = "; ".join(
+                f"“{md(s.quote)}” {cite_source(s.source_record_id)}"
+                for s in c.spans
+                if s.stance == "contradicts"
+            )
+            out.append(
+                f"- **{md(c.entity or 'General')}: {md(c.attribute or '')}** ({label}). "
+                f"Says: {says}. Disagrees: {against}."
+            )
         out.append("")
+
+        total = len(cell_labels)
+        if total:
+            n_sup = sum(c.startswith("Supported") for c in cell_labels)
+            n_comm = sum(c.startswith("Unknown (community only)") for c in cell_labels)
+            out[summary_at:summary_at] = [
+                "## Summary",
+                "",
+                "*Computed from the evidence in this report; not itself a sourced claim.*",
+                "",
+                f"- {n_sup} of {total} matrix cells are supported by a reference, URL or "
+                f"document source; {n_comm} rely on community discussion only; "
+                f"{total - n_sup - n_comm} have no evidence.",
+                f"- {len(conflicts)} conflict(s) found between sources.",
+                f"- {len(numbers)} of {len(sources)} retrieved sources are cited.",
+                "",
+            ]
 
         out += ["## Sources", ""]
         cited = sorted(numbers.items(), key=lambda kv: kv[1])

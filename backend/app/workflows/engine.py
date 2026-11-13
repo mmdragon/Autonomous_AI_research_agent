@@ -31,9 +31,13 @@ from app.schemas.research import (
 from app.sources.http import BlockedError, SourceError
 from app.sources.models import SourceRecord
 from app.sources.registry import SourceTools
+from app.verification.conflicts import detect_conflicts
+from app.verification.report_check import check_report
 from app.verification.verifier import verify_claims
 
 log = logging.getLogger(__name__)
+
+MAX_REPORT_CHARS = 200_000
 
 
 class WorkflowLimitError(Exception):
@@ -242,13 +246,17 @@ class WorkflowEngine:
     def _analyze(self, run_id, step_id, request: ResearchRequest, state: WorkflowState) -> str:
         plan = _require_plan(state)
         sources = self.repo.list_sources(run_id)
-        claims = self.agents.analyst.analyze(
-            request, plan, sources, self.repo.source_contents(run_id)
-        )
+        contents = self.repo.source_contents(run_id)
+        claims = self.agents.analyst.analyze(request, plan, sources, contents)
+        conflicts = detect_conflicts(request.entities, sources, contents)
+        claims += conflicts
         self.repo.replace_claims(run_id, claims)
         state.claim_count = len(claims)
         with_evidence = sum(1 for c in claims if c.spans)
-        return f"{len(claims)} claims ({with_evidence} with evidence) from {len(sources)} sources"
+        return (
+            f"{len(claims)} claims ({with_evidence} with evidence, {len(conflicts)} conflicts)"
+            f" from {len(sources)} sources"
+        )
 
     def _verify(self, run_id, step_id, request: ResearchRequest, state: WorkflowState) -> str:
         sources = self.repo.list_sources(run_id)
@@ -263,15 +271,21 @@ class WorkflowEngine:
 
     def _write(self, run_id, step_id, request: ResearchRequest, state: WorkflowState) -> str:
         plan = _require_plan(state)
+        claims, sources = self.repo.list_claims(run_id), self.repo.list_sources(run_id)
         markdown = self.agents.writer.write(
-            request,
-            plan,
-            self.repo.list_claims(run_id),
-            self.repo.list_sources(run_id),
-            context={"sources_mode": self.settings.sources_mode},
+            request, plan, claims, sources, context={"sources_mode": self.settings.sources_mode}
         )
+        if len(markdown) > MAX_REPORT_CHARS:
+            raise StageError(f"Report exceeds {MAX_REPORT_CHARS} characters")
+        check = check_report(markdown, claims, sources)
+        if not check.ok:  # never save a report that cites anything not in stored evidence
+            more = f" (+{len(check.problems) - 1} more)" if len(check.problems) > 1 else ""
+            raise StageError(f"Report failed evidence check: {check.problems[0]}{more}")
         state.report_id = self.repo.save_report(run_id, markdown)
-        return f"Markdown report, {len(markdown)} characters"
+        return (
+            f"Markdown report, {len(markdown)} characters; evidence check passed "
+            f"({check.quotes} quotes, {check.citations} citations)"
+        )
 
 
 def _require_plan(state: WorkflowState) -> ResearchPlan:

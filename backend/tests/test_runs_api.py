@@ -24,6 +24,10 @@ def test_create_run_executes_in_background_and_exposes_results(client):
     ]
     assert detail["plan"]["questions"] and detail["sources"] and detail["claims"]
     assert detail["has_report"] is True
+    cited = [c for c in detail["claims"] if c["spans"]]
+    assert all(c["source_record_ids"] for c in cited)
+    source_ids = {s["id"] for s in detail["sources"]}
+    assert all(set(c["source_record_ids"]) <= source_ids for c in cited)
     assert "content" not in detail["sources"][0]  # full text is not sent to the browser
 
     assert client.get("/api/runs").json()[0]["id"] == run_id

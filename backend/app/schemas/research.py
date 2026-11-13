@@ -6,7 +6,14 @@ from datetime import datetime
 from enum import StrEnum
 from typing import Annotated, Literal
 
-from pydantic import AnyHttpUrl, BaseModel, Field, StringConstraints, field_validator
+from pydantic import (
+    AnyHttpUrl,
+    BaseModel,
+    Field,
+    StringConstraints,
+    computed_field,
+    field_validator,
+)
 
 from app.sources.models import SourceKind
 
@@ -111,6 +118,12 @@ class Claim(BaseModel):
     verification_status: VerificationStatus = VerificationStatus.UNKNOWN
     notes: str | None = None
     spans: list[EvidenceSpan] = Field(default_factory=list)
+
+    @computed_field
+    @property
+    def source_record_ids(self) -> list[str]:
+        """Distinct sources this claim's evidence comes from, in span order."""
+        return list(dict.fromkeys(s.source_record_id for s in self.spans))
 
 
 # --- API responses ---
