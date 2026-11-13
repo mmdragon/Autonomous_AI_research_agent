@@ -1,0 +1,6 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/2001.json",
+  "status": 200,
+  "json": {"id": 2001, "type": "comment", "by": "c1", "parent": 1002, "time": 1711930000,
+           "text": "We use Example CMS Beta.<p>Its <i>GraphQL</i> API is fine."}
+}

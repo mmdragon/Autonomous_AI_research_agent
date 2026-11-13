@@ -4,8 +4,9 @@ A local-first research assistant. It takes a scoped research task, plans the ste
 public sources (Wikipedia, Hacker News, URLs and documents you provide), maps claims to stored
 evidence, flags gaps and conflicts, and writes a Markdown report with source links.
 
-Status: **Phase 1 (scaffold)**. The API serves a health check and creates the SQLite schema.
-Source adapters, the workflow, and the research UI come in later phases. See
+Status: **Phase 2 (source adapters)**. The API serves a health check and creates the SQLite
+schema; the source adapters are implemented and tested. The workflow and research UI come in
+later phases. See
 [docs/PLAN.md](docs/PLAN.md).
 
 ## Stack
@@ -35,6 +36,32 @@ npm run dev
 Open http://localhost:3000. The page shows whether the API and database are reachable.
 
 The database is created at `backend/data/research.sqlite3` on first start. Delete that folder to reset.
+
+## Sources
+
+All adapters live in [backend/app/sources/](backend/app/sources/), share one read-only
+`HttpClient` (timeouts, per-host rate limit, bounded retries on 429/5xx/timeouts with
+`Retry-After` honored, response size cap) and return normalized `SourceRecord`s with URL,
+title, retrieved-at timestamp (UTC), excerpt, the exact normalized content and its SHA-256.
+
+| Adapter | API | Kind | Notes |
+|---|---|---|---|
+| `WikipediaSource` | MediaWiki Action API | reference | `maxlag=5`, descriptive User-Agent, CC BY-SA 4.0 license on each record |
+| `HackerNewsSource` | Algolia HN Search + HN Firebase API | community | Discussion opinion, not verified fact; usernames not stored; bounded comments |
+| `UserUrlSource` | the URL you provide | user_url | Public IPs only, ports 80/443, robots.txt honored, ≤3 redirects re-checked, HTML/text only |
+| `load_document` | uploaded file | document | `.txt` / `.md` only so far (PDF later) |
+
+**Offline fixtures.** With `SOURCES_MODE=fixtures` (the default), requests are answered from
+recorded responses in `backend/fixtures/http/`; anything not recorded fails with a clear error
+instead of touching the network. To record real responses (makes live, rate-limited calls; needs
+`HTTP_USER_AGENT` with your contact in `backend/.env`):
+
+```bash
+cd backend && uv run python -m scripts.record_fixtures "headless CMS" "Strapi" --hn "headless CMS"
+```
+
+Unit tests use the synthetic fixtures in `backend/tests/fixtures/http/` and never call live APIs.
+An opt-in live smoke test runs with `RUN_LIVE_TESTS=1 uv run pytest`.
 
 ## API
 
@@ -69,4 +96,8 @@ quotes text that really appears in a stored source.
 
 ## Limitations
 
-Phase 1 only. There is no research workflow yet.
+- No research workflow yet (Phase 3); adapters are not exposed over the API.
+- No general web search: only Wikipedia, Hacker News, and URLs/documents you supply.
+- `backend/fixtures/http/` is empty until you record fixtures.
+- URL safety checks resolve DNS before the request, so a hostile DNS server could rebind in
+  between. Acceptable for a local tool you drive yourself.

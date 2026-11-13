@@ -20,6 +20,7 @@ class Settings(BaseSettings):
     llm_provider: Literal["mock"] = "mock"
     # "fixtures" replays recorded API responses (offline); "live" calls public APIs.
     sources_mode: Literal["fixtures", "live"] = "fixtures"
+    fixtures_dir: Path = BACKEND_ROOT / "fixtures" / "http"
 
     # Wikimedia API etiquette requires a descriptive User-Agent with a contact.
     # Set your own contact in backend/.env before using live mode.

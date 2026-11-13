@@ -1,0 +1,5 @@
+{
+  "request_url": "https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&maxlag=5&titles=No%20Such%20Page&prop=extracts%7Cinfo&explaintext=1&inprop=url&redirects=1",
+  "status": 200,
+  "json": {"query": {"pages": [{"ns": 0, "title": "No Such Page", "missing": true}]}}
+}

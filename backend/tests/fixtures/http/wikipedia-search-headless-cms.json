@@ -1,0 +1,23 @@
+{
+  "request_url": "https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&maxlag=5&generator=search&gsrsearch=headless%20cms&gsrlimit=3&gsrnamespace=0&prop=extracts%7Cinfo&exintro=1&explaintext=1&exlimit=max&inprop=url&redirects=1",
+  "status": 200,
+  "json": {
+    "batchcomplete": true,
+    "query": {
+      "pages": [
+        {"pageid": 2, "ns": 0, "title": "Example CMS Beta", "index": 2, "lastrevid": 202,
+         "extract": "Example CMS Beta is a fictional open-source headless CMS written in TypeScript.",
+         "fullurl": "https://en.wikipedia.org/wiki/Example_CMS_Beta",
+         "canonicalurl": "https://en.wikipedia.org/wiki/Example_CMS_Beta"},
+        {"pageid": 1, "ns": 0, "title": "Headless content management system", "index": 1,
+         "lastrevid": 101,
+         "extract": "A headless content management system is a back-end only CMS.\n\n\nIt exposes content through an API.",
+         "fullurl": "https://en.wikipedia.org/wiki/Headless_content_management_system",
+         "canonicalurl": "https://en.wikipedia.org/wiki/Headless_content_management_system"},
+        {"pageid": 3, "ns": 0, "title": "Empty Stub", "index": 3, "extract": "",
+         "fullurl": "https://en.wikipedia.org/wiki/Empty_Stub",
+         "canonicalurl": "https://en.wikipedia.org/wiki/Empty_Stub"}
+      ]
+    }
+  }
+}

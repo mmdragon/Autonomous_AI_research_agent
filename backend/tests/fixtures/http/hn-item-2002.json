@@ -1,0 +1,5 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/2002.json",
+  "status": 200,
+  "json": {"id": 2002, "type": "comment", "deleted": true, "parent": 1002, "time": 1711930100}
+}

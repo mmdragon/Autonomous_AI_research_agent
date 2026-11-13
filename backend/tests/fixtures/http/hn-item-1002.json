@@ -1,0 +1,8 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/1002.json",
+  "status": 200,
+  "json": {"id": 1002, "type": "story", "by": "another", "time": 1711929600, "score": 30,
+           "title": "Ask HN: Which headless CMS do you use?",
+           "text": "<p>We are a team of three &amp; need &quot;simple&quot; hosting.</p>",
+           "kids": [2001, 2002, 2003]}
+}

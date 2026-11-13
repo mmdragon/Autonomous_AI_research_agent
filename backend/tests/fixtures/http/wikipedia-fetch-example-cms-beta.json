@@ -1,0 +1,14 @@
+{
+  "request_url": "https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&maxlag=5&titles=Example%20CMS%20Beta&prop=extracts%7Cinfo&explaintext=1&inprop=url&redirects=1",
+  "status": 200,
+  "json": {
+    "query": {
+      "pages": [
+        {"pageid": 2, "ns": 0, "title": "Example CMS Beta", "lastrevid": 202,
+         "extract": "Example CMS Beta is a fictional open-source headless CMS written in TypeScript.\n\n== Features ==\nIt provides REST and GraphQL APIs.",
+         "fullurl": "https://en.wikipedia.org/wiki/Example_CMS_Beta",
+         "canonicalurl": "https://en.wikipedia.org/wiki/Example_CMS_Beta"}
+      ]
+    }
+  }
+}
