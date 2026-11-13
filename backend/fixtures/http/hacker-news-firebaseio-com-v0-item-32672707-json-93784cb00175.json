@@ -1,0 +1,19 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/32672707.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 32672707,
+    "kids": [
+      32676115,
+      32672818,
+      32688464
+    ],
+    "parent": 32665325,
+    "text": "Few things I really need in a CMS:<p>* allow me to create a localized content (you seem to have this covered).<p>* a good story for blobs (images, video, PDFs, etc).<p>* integrated full text search (I do not want to set up elastic search when using a headless CMS saas).<p>* fully spec&#x27;d API (when I have defined a content type, I need some API spec to be updated; openAPIv3 was good, GraphQL is better: so I can generate a client lib).<p>* some mechanism to know the API was updated (so I can show the &quot;a new version is available, the version you run may no longer work in certain cases, please click here to use the newest version&quot; message somewhere).<p>* a story on content blocks (say: text, image, text, quote, text, author card) vs embeddable content in text blocks (say: a text block with a way to embed images&#x2F;etc into it); the latter is really hard to do right imho.",
+    "time": 1662013515,
+    "type": "comment"
+  }
+}

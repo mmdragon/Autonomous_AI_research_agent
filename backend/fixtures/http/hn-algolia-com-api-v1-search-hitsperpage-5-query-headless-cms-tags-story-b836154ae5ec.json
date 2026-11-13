@@ -1,0 +1,344 @@
+{
+  "request_url": "https://hn.algolia.com/api/v1/search?hitsPerPage=5&query=headless CMS&tags=story",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json"
+  },
+  "json": {
+    "exhaustive": {
+      "nbHits": false,
+      "typo": false
+    },
+    "exhaustiveNbHits": false,
+    "exhaustiveTypo": false,
+    "hits": [
+      {
+        "_highlightResult": {
+          "story_text": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "headless",
+              "cms"
+            ],
+            "value": "Hey HN, my name is James and I founded Payload (<a href=\"https://payloadcms.com/\" rel=\"nofollow\">https://payloadcms.com/</a>) with two close colleagues, Dan and Elliot. We're a dev-first <em>headless</em> <em>CMS</em> [1] that's half app framework and half <em>CMS</em>—we're closing the gap between the two. You can check out our demo here: <a href=\"https://demo.payloadcms.com\" rel=\"nofollow\">https://demo.payloadcms.com</a>.<p>Imagine you're going to build a new SaaS app. Would you think of building it on a <em>headless</em> <em>CMS</em>? Probably not.  To devs, &quot;content management system&quot; is usually a swear word. If a team of engineers gets assigned a <em>CMS</em> project, it's less than thrilling. Engineers want to avoid roadblocks, write code, and build things they're proud of—but existing <em>CMS</em>'s get in the way of that left and right with their third-party integrations, point-and-click schema designers, code generation, etc.<p>Rather, you'd build your backend on an app framework like Django, Laravel, etc., for good reasons: ownership over the backend, better access control, customizable auth patterns, etc. Typically, <em>headless</em> <em>CMS</em> are super limiting; you'll end up fighting the platform more than having it help. But, with app frameworks, you're often left to roll your own admin UI, and that takes time. Not to mention building CRUD UI gets old quick after you do it a few times.<p>That’s where a <em>headless</em> <em>CMS</em> could shine, because they instantly give you admin UI that non-technical teams can use to manage digital products. That saves a ton of UI dev time— but without an extensible API, <em>headless</em> <em>CMS</em>'s are far too limiting. They're designed for marketing teams, which usually only need the generic basics: log in, create a draft, preview the draft, publish the content. Go back and update some pages. Define editor roles and localize content.  If you need more than that, you'll soon be out of luck.<p>Payload is different because we treat developers as first-class citizens. We provide the best of both ends: a powerful and extensible API and a fully customizable admin UI out-of-the-box. All with a developer experience that we obsess over, because we want it ourselves.<p>Payload is code-first, which allows us to get a lot of things right. We give you what you need, then step back and let you build what you want in TypeScript. You'll understand how your <em>CMS</em> works because you will have written it exactly how you want it. Version control your schema and use your own Express server. Completely control the Admin panel by using your own React components. Swap out fields or even entire views with ease. Use your data however and wherever you need thanks to auto-generated, yet fully extensible REST, GraphQL, and Local Node APIs.<p>Since it uses your own Express server, you can open up your own endpoints alongside what Payload does. In fact, you can extend just about everything that Payload does. It's MIT and open-source, fully self-hosted, comes with GraphQL and REST APIs, and completely customizable.<p>We realized the need for Payload while we were building the corporate website for Klarna. The Klarna engineers we were working with were among the best in the world, and while they evaluated <em>headless</em> <em>CMS</em> options, they saw restrictions in how all of the normal contenders &quot;black-box&quot; away the API. They wanted to build their <em>CMS</em>, deploy it on their own infrastructure, and truly &quot;own&quot; their <em>CMS</em>. They fell back to using WordPress. When that happened, Klarna inadvertently shined a spotlight on the <em>CMS</em> market and pointed out a significant void in proper code-based, developer-first <em>CMS</em>. There was no one to give them the developer experience they needed. That's what got us started working on this.<p>It might seem like a <em>CMS</em> is just a wrapper around a database with a nice UI to show different field types—but in reality, it's a lot more complex than that. We obsessed for years around how to build a proper API that minimizes breaking changes, but still exposes a simple way to extend everything. When you start to introduce things like field-based access control, field-based conditional logic, localization, versions, drafts, and autosave, the task becomes a lot more daunting. Doing it right requires a significant development investment—especially if you want it to perform at scale in addition to removing roadblocks at dev time.<p>It seems like every day, a new <em>headless</em> <em>CMS</em> pops up. But when you filter down to those that are completely self-hosted, the options quickly dwindle. And then when you remove the confused point-and-click &quot;no-code&quot; (argh!) GUI nature of the existing options, the options narrow to one: Payload.<p>Our users have built quite a diverse set of apps on Payload. We've seen a virtual events platform, a broadcast platform, SaaS apps of all shapes and sizes, video games, and an Uber-like snow plow service! There are over 1,000 projects in production as of last week, and we can't wait to see more.<p>Open source has been incredibly helpful. We've gotten significant PRs and our community has gone above and beyond in their contributions. We did not anticipate the level of skill and involvement that we are seeing daily from our community.<p>Our business model is based on two things:<p>1. Enterprise features like SSO, audit logs, publication workflows, and translation workflows. Of course, as Payload is open-source, you can build these functions yourself, but enterprises are opting to pay for our official functionality and SLAs rather than rolling it themselves.<p>2. Cloud hosting. Now that Payload 1.0 is released and ready for production after more than two years of development and dogfooding, we've shifted focus to building a deployment platform for Payload that will deliver permanent file storage, database, API layer, and CI. It will be the easiest way to deploy Payload, but not mandatory to use—much like the NextJS and Vercel model.<p>You can get started in one line by running `npx create-payload-app` or you can try out our public demo at <a href=\"https://demo.payloadcms.com\" rel=\"nofollow\">https://demo.payloadcms.com</a>. The code for the demo is at <a href=\"https://github.com/payloadcms/public-demo\" rel=\"nofollow\">https://github.com/payloadcms/public-demo</a>.<p>We would love to hear your feedback. If we don't have something, we'll build it. If there's a sticky spot in the DX (developer experience), we’ll fix it. Looking forward to hearing what you think—and thank you!<p>[1] Quick refresher: <em>CMS</em> stands for &quot;content management system&quot; and <em>headless</em> just means API-based, with no restrictions over where you use the content on the frontend."
+          },
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "headless",
+              "cms"
+            ],
+            "value": "Launch HN: Payload (YC S22) – <em>Headless</em> <em>CMS</em> for Developers"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_sneek_",
+          "story_32665325",
+          "launch_hn"
+        ],
+        "children": [
+          32665486,
+          32665489,
+          32665509,
+          32665560,
+          32665776,
+          32665788,
+          32665853,
+          32665929,
+          32665939,
+          32665968,
+          32666117,
+          32666166,
+          32666253,
+          32666783,
+          32666914,
+          32666942,
+          32666969,
+          32667034,
+          32667040,
+          32667090,
+          32667135,
+          32667157,
+          32667284,
+          32667627,
+          32667738,
+          32667976,
+          32668065,
+          32668166,
+          32668329,
+          32668359,
+          32668501,
+          32668645,
+          32669568,
+          32669588,
+          32670347,
+          32670363,
+          32670644,
+          32671833,
+          32672707,
+          32672993,
+          32673341,
+          32673394,
+          32674658,
+          32675029,
+          32675227,
+          32678479,
+          32683303,
+          32689510
+        ],
+        "created_at": "2022-08-31T17:14:58Z",
+        "created_at_i": 1661966098,
+        "num_comments": 137,
+        "objectID": "32665325",
+        "points": 242,
+        "story_id": 32665325,
+        "story_text": "Hey HN, my name is James and I founded Payload (<a href=\"https:&#x2F;&#x2F;payloadcms.com&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;payloadcms.com&#x2F;</a>) with two close colleagues, Dan and Elliot. We&#x27;re a dev-first headless CMS [1] that&#x27;s half app framework and half CMS—we&#x27;re closing the gap between the two. You can check out our demo here: <a href=\"https:&#x2F;&#x2F;demo.payloadcms.com\" rel=\"nofollow\">https:&#x2F;&#x2F;demo.payloadcms.com</a>.<p>Imagine you&#x27;re going to build a new SaaS app. Would you think of building it on a headless CMS? Probably not.  To devs, &quot;content management system&quot; is usually a swear word. If a team of engineers gets assigned a CMS project, it&#x27;s less than thrilling. Engineers want to avoid roadblocks, write code, and build things they&#x27;re proud of—but existing CMS&#x27;s get in the way of that left and right with their third-party integrations, point-and-click schema designers, code generation, etc.<p>Rather, you&#x27;d build your backend on an app framework like Django, Laravel, etc., for good reasons: ownership over the backend, better access control, customizable auth patterns, etc. Typically, headless CMS are super limiting; you&#x27;ll end up fighting the platform more than having it help. But, with app frameworks, you&#x27;re often left to roll your own admin UI, and that takes time. Not to mention building CRUD UI gets old quick after you do it a few times.<p>That’s where a headless CMS could shine, because they instantly give you admin UI that non-technical teams can use to manage digital products. That saves a ton of UI dev time— but without an extensible API, headless CMS&#x27;s are far too limiting. They&#x27;re designed for marketing teams, which usually only need the generic basics: log in, create a draft, preview the draft, publish the content. Go back and update some pages. Define editor roles and localize content.  If you need more than that, you&#x27;ll soon be out of luck.<p>Payload is different because we treat developers as first-class citizens. We provide the best of both ends: a powerful and extensible API and a fully customizable admin UI out-of-the-box. All with a developer experience that we obsess over, because we want it ourselves.<p>Payload is code-first, which allows us to get a lot of things right. We give you what you need, then step back and let you build what you want in TypeScript. You&#x27;ll understand how your CMS works because you will have written it exactly how you want it. Version control your schema and use your own Express server. Completely control the Admin panel by using your own React components. Swap out fields or even entire views with ease. Use your data however and wherever you need thanks to auto-generated, yet fully extensible REST, GraphQL, and Local Node APIs.<p>Since it uses your own Express server, you can open up your own endpoints alongside what Payload does. In fact, you can extend just about everything that Payload does. It&#x27;s MIT and open-source, fully self-hosted, comes with GraphQL and REST APIs, and completely customizable.<p>We realized the need for Payload while we were building the corporate website for Klarna. The Klarna engineers we were working with were among the best in the world, and while they evaluated headless CMS options, they saw restrictions in how all of the normal contenders &quot;black-box&quot; away the API. They wanted to build their CMS, deploy it on their own infrastructure, and truly &quot;own&quot; their CMS. They fell back to using WordPress. When that happened, Klarna inadvertently shined a spotlight on the CMS market and pointed out a significant void in proper code-based, developer-first CMS. There was no one to give them the developer experience they needed. That&#x27;s what got us started working on this.<p>It might seem like a CMS is just a wrapper around a database with a nice UI to show different field types—but in reality, it&#x27;s a lot more complex than that. We obsessed for years around how to build a proper API that minimizes breaking changes, but still exposes a simple way to extend everything. When you start to introduce things like field-based access control, field-based conditional logic, localization, versions, drafts, and autosave, the task becomes a lot more daunting. Doing it right requires a significant development investment—especially if you want it to perform at scale in addition to removing roadblocks at dev time.<p>It seems like every day, a new headless CMS pops up. But when you filter down to those that are completely self-hosted, the options quickly dwindle. And then when you remove the confused point-and-click &quot;no-code&quot; (argh!) GUI nature of the existing options, the options narrow to one: Payload.<p>Our users have built quite a diverse set of apps on Payload. We&#x27;ve seen a virtual events platform, a broadcast platform, SaaS apps of all shapes and sizes, video games, and an Uber-like snow plow service! There are over 1,000 projects in production as of last week, and we can&#x27;t wait to see more.<p>Open source has been incredibly helpful. We&#x27;ve gotten significant PRs and our community has gone above and beyond in their contributions. We did not anticipate the level of skill and involvement that we are seeing daily from our community.<p>Our business model is based on two things:<p>1. Enterprise features like SSO, audit logs, publication workflows, and translation workflows. Of course, as Payload is open-source, you can build these functions yourself, but enterprises are opting to pay for our official functionality and SLAs rather than rolling it themselves.<p>2. Cloud hosting. Now that Payload 1.0 is released and ready for production after more than two years of development and dogfooding, we&#x27;ve shifted focus to building a deployment platform for Payload that will deliver permanent file storage, database, API layer, and CI. It will be the easiest way to deploy Payload, but not mandatory to use—much like the NextJS and Vercel model.<p>You can get started in one line by running `npx create-payload-app` or you can try out our public demo at <a href=\"https:&#x2F;&#x2F;demo.payloadcms.com\" rel=\"nofollow\">https:&#x2F;&#x2F;demo.payloadcms.com</a>. The code for the demo is at <a href=\"https:&#x2F;&#x2F;github.com&#x2F;payloadcms&#x2F;public-demo\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;payloadcms&#x2F;public-demo</a>.<p>We would love to hear your feedback. If we don&#x27;t have something, we&#x27;ll build it. If there&#x27;s a sticky spot in the DX (developer experience), we’ll fix it. Looking forward to hearing what you think—and thank you!<p>[1] Quick refresher: CMS stands for &quot;content management system&quot; and headless just means API-based, with no restrictions over where you use the content on the frontend.",
+        "title": "Launch HN: Payload (YC S22) – Headless CMS for Developers",
+        "updated_at": "2026-02-16T00:51:13Z"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "headless",
+              "cms"
+            ],
+            "value": "Using Notion as a <em>headless</em> <em>CMS</em> for our blog"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "headless",
+              "cms"
+            ],
+            "value": "https://datanarratives.com/blog/notion-<em>headless</em>-<em>cms</em>/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_mooreds",
+          "story_33121628"
+        ],
+        "children": [
+          33122015,
+          33122058,
+          33122173,
+          33122196,
+          33122296,
+          33122465,
+          33122538,
+          33122669,
+          33122691,
+          33123163,
+          33124090,
+          33124338,
+          33125595,
+          33126204,
+          33126262,
+          33126279,
+          33126293,
+          33127065,
+          33127102,
+          33127245,
+          33128117,
+          33128144,
+          33128716,
+          33129316,
+          33130156,
+          33132046
+        ],
+        "created_at": "2022-10-07T14:14:33Z",
+        "created_at_i": 1665152073,
+        "num_comments": 82,
+        "objectID": "33121628",
+        "points": 153,
+        "story_id": 33121628,
+        "title": "Using Notion as a headless CMS for our blog",
+        "updated_at": "2024-12-22T04:10:11Z",
+        "url": "https://datanarratives.com/blog/notion-headless-cms/"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "headless",
+              "cms"
+            ],
+            "value": "Show HN: GraphCMS – A GraphQL-based <em>Headless</em> <em>CMS</em>"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://graphcms.com/blog/new-graphcms-ready-for-launch"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_mlukaszczyk",
+          "story_17450974",
+          "show_hn"
+        ],
+        "children": [
+          17451119,
+          17451494,
+          17451700,
+          17451734,
+          17451739,
+          17451971,
+          17452034,
+          17452054,
+          17452304,
+          17452556,
+          17452867,
+          17453324,
+          17453871,
+          17454833,
+          17455526,
+          17468497
+        ],
+        "created_at": "2018-07-03T15:29:44Z",
+        "created_at_i": 1530631784,
+        "num_comments": 69,
+        "objectID": "17450974",
+        "points": 115,
+        "story_id": 17450974,
+        "title": "Show HN: GraphCMS – A GraphQL-based Headless CMS",
+        "updated_at": "2024-09-20T02:42:51Z",
+        "url": "https://graphcms.com/blog/new-graphcms-ready-for-launch"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "headless",
+              "cms"
+            ],
+            "value": "Strapi – Open-source Node.js <em>Headless</em> <em>CMS</em>"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://strapi.io/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_jhabdas",
+          "story_23453530"
+        ],
+        "children": [
+          23454201,
+          23454799,
+          23454851,
+          23454951,
+          23455082,
+          23455284,
+          23455325,
+          23455360,
+          23455550,
+          23455715,
+          23455725,
+          23455774,
+          23455813,
+          23455852,
+          23456094,
+          23456194,
+          23457195,
+          23457245,
+          23457378,
+          23457422,
+          23458036,
+          23458708,
+          23458770,
+          23459898,
+          23461209,
+          23461433
+        ],
+        "created_at": "2020-06-08T04:21:41Z",
+        "created_at_i": 1591590101,
+        "num_comments": 68,
+        "objectID": "23453530",
+        "points": 106,
+        "story_id": 23453530,
+        "title": "Strapi – Open-source Node.js Headless CMS",
+        "updated_at": "2024-10-21T18:23:11Z",
+        "url": "https://strapi.io/"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "headless",
+              "cms"
+            ],
+            "value": "Show HN: Sanity – A <em>Headless</em> <em>CMS</em> Construction Kit in JavaScript"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://www.sanity.io/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_rexxars",
+          "story_15694266",
+          "show_hn"
+        ],
+        "children": [
+          15696059,
+          15696080,
+          15696689,
+          15697310,
+          15697318,
+          15697908,
+          15699360,
+          15700402,
+          15700987,
+          15701562,
+          15717294
+        ],
+        "created_at": "2017-11-14T11:52:50Z",
+        "created_at_i": 1510660370,
+        "num_comments": 30,
+        "objectID": "15694266",
+        "points": 90,
+        "story_id": 15694266,
+        "title": "Show HN: Sanity – A Headless CMS Construction Kit in JavaScript",
+        "updated_at": "2024-09-20T01:41:35Z",
+        "url": "https://www.sanity.io/"
+      }
+    ],
+    "hitsPerPage": 5,
+    "nbHits": 400,
+    "nbPages": 80,
+    "page": 0,
+    "params": "query=headless+CMS&tags=story&hitsPerPage=5&advancedSyntax=true&analyticsTags=backend",
+    "processingTimeMS": 17,
+    "processingTimingsMS": {
+      "_request": {
+        "roundTrip": 14
+      },
+      "fetch": {
+        "query": 6,
+        "scanning": 9,
+        "total": 16
+      },
+      "total": 17
+    },
+    "query": "headless CMS",
+    "serverTimeMS": 18
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "request_url": "https://en.wikipedia.org/w/api.php?action=query&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&prop=extracts|info&redirects=1&titles=List of TCP and UDP port numbers",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "batchcomplete": true,
+    "query": {
+      "pages": [
+        {
+          "pageid": 347136,
+          "ns": 0,
+          "title": "List of TCP and UDP port numbers",
+          "extract": "This is a list of TCP and UDP port numbers used by protocols for operation of network applications. The Transmission Control Protocol (TCP) and the User Datagram Protocol (UDP) only need one port for bidirectional traffic. TCP usually uses port numbers that match the services of the corresponding UDP implementations, if they exist, and vice versa.\nThe Internet Assigned Numbers Authority (IANA) is responsible for maintaining the official assignments of port numbers for specific uses. However, many unofficial uses of both well-known and registered port numbers occur in practice. Similarly, many of the official assignments refer to protocols that were never or are no longer in common use. This article lists port numbers and their associated protocols that have experienced significant uptake.\n\n\n== Table legend ==\n\n\n== Well-known ports ==\n\nThe port numbers in the range from 0 to 1023 (0 to 210 − 1) are the well-known ports or system ports. They are used by system processes that provide widely used types of network services. On Unix-like operating systems, a process must execute with superuser privileges to be able to bind a network socket to an IP address using one of the well-known ports.\n\n\n== Registered ports ==\n\nThe range of port numbers from 1024 to 49151 (210 to 215 + 214 − 1) are the registered ports. They are assigned by IANA for specific service upon application by a requesting entity. On most systems, registered ports can be used without superuser privileges.\n\n\n== Dynamic, private or ephemeral ports ==\n\nThe range 49152–65535 (215 + 214 to 216 − 1), 16 384 ports, contains dynamic or private ports that cannot be registered with IANA. This range is used for private or customized services, for temporary purposes, and for automatic allocation of ephemeral ports.\n\n\n== Note ==\n\n\n== See also ==\nComparison of file transfer protocols\nInternet protocol suite\nPort (computer networking)\nList of IP protocol numbers\nLists of network protocols\n\n\n== References and notes ==\n\n\n== Further reading ==\nReynolds, Joyce; Postel, Jon (October 1994). Assigned Numbers. IETF. doi:10.17487/RFC1700. RFC 1700.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T05:19:14Z",
+          "lastrevid": 1385417109,
+          "length": 336269,
+          "fullurl": "https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=List_of_TCP_and_UDP_port_numbers&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers"
+        }
+      ]
+    }
+  }
+}

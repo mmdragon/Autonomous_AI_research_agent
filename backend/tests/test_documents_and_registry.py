@@ -90,6 +90,34 @@ def test_recording_round_trips_through_replay(tmp_path):
     assert [r.title for r in replayed] == ["Recorded"]
 
 
+def test_recording_long_urls_do_not_collide(tmp_path):
+    inner = httpx.MockTransport(lambda r: httpx.Response(200, json={"q": r.url.params["q"]}))
+    client = httpx.Client(transport=RecordingTransport(tmp_path, inner))
+    long_prefix = "https://en.wikipedia.org/w/api.php?" + "&".join(f"a{i}=1" for i in range(30))
+    for q in ("one", "two"):
+        client.get(f"{long_prefix}&q={q}")
+    assert len(list(tmp_path.glob("*.json"))) == 2
+    replay = httpx.Client(transport=ReplayTransport(tmp_path))
+    assert replay.get(f"{long_prefix}&q=two").json() == {"q": "two"}
+
+
+def test_recording_strips_usernames(tmp_path):
+    hit = {
+        "objectID": "1",
+        "title": "T",
+        "author": "alice",
+        "by": "alice",
+        "_highlightResult": {"author": {"value": "alice"}, "title": {"value": "T"}},
+    }
+    inner = httpx.MockTransport(lambda r: httpx.Response(200, json={"hits": [hit]}))
+    client = httpx.Client(transport=RecordingTransport(tmp_path, inner))
+    served = client.get("https://hn.algolia.com/api/v1/search?query=x").json()
+    stored = json.loads(next(tmp_path.glob("*.json")).read_text())["json"]
+    for data in (served, stored):
+        assert "alice" not in json.dumps(data)
+        assert data["hits"][0]["_highlightResult"]["title"] == {"value": "T"}
+
+
 def test_live_mode_requires_configured_user_agent(tmp_path):
     settings = Settings(_env_file=None, sources_mode="live")
     with pytest.raises(ValueError, match="HTTP_USER_AGENT"):

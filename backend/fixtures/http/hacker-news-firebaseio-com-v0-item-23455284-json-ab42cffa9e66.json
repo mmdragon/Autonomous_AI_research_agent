@@ -1,0 +1,18 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/23455284.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 23455284,
+    "kids": [
+      23455308,
+      23460324
+    ],
+    "parent": 23453530,
+    "text": "I’m using Strapi + VueJs for making a static website more dynamic for a NGO and it works like a charm !\nThe only issue I had so far is that the admin form customizations seem to be stored in the database instead of application files, so it’s not possible to replicate them easily between environments",
+    "time": 1591611578,
+    "type": "comment"
+  }
+}

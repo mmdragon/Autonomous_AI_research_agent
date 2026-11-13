@@ -1,0 +1,44 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/23453530.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "descendants": 68,
+    "id": 23453530,
+    "kids": [
+      23455284,
+      23455360,
+      23455715,
+      23458770,
+      23458036,
+      23456094,
+      23454951,
+      23454851,
+      23457378,
+      23455813,
+      23455852,
+      23461209,
+      23458708,
+      23457245,
+      23455550,
+      23455082,
+      23454799,
+      23457422,
+      23461433,
+      23454201,
+      23457195,
+      23456194,
+      23455725,
+      23459898,
+      23455325,
+      23455774
+    ],
+    "score": 106,
+    "time": 1591590101,
+    "title": "Strapi – Open-source Node.js Headless CMS",
+    "type": "story",
+    "url": "https://strapi.io/"
+  }
+}

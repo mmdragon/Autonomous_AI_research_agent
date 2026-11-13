@@ -1,0 +1,19 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/23455360.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 23455360,
+    "kids": [
+      23456122,
+      23455464,
+      23455431
+    ],
+    "parent": 23453530,
+    "text": "I think a lot of people are missing the point of a tool like Strapi.<p>1. CMS experience for non-technical teams: marketing, product, content, etc.\n2. Graphql api to avoid lock-in. Tomorrow you can take your data to AWS Appsync, etc\n3. Ownership of the data: Contentful, Prismic, etc are great - but Strapi allows you to own the data. Even in its simplest form, its a sqlite file you can check in to git.",
+    "time": 1591612528,
+    "type": "comment"
+  }
+}

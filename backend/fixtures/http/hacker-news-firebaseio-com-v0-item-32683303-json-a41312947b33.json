@@ -1,0 +1,17 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/32683303.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 32683303,
+    "kids": [
+      32684066
+    ],
+    "parent": 32665325,
+    "text": "&gt; Consistent with Payload&#x27;s goal of making you learn as little of Payload as possible, customizing and using the Rich Text Editor does not involve learning how to develop for a Payload rich text editor. Instead, you can invest your time and effort into learning Slate, an open-source tool that will allow you to apply your learnings elsewhere as well.<p>I have to say, this callout from the JSON-based Rich Text Field docs [0] really resonated with me. Rather than build out something yourself that would further lock folks into your platform (and force them to customize yet another bespoke tool), you leaned on an existing, mature, and capable framework for rich text editors, Slate [1]. And your stated reason—to “allow you to apply your learnings elsewhere as well”—was really appreciated. It shows a lot of respect for time and resources of the individuals using Payload.<p>I don’t have a specific need for a headless CMS right this second, but I can promise that Payload will be my first candidate to review when I do. Previously, it would’ve been Strapi, as I’ve used that tool already for several projects. But that one paragraph <i>really</i> struck me.<p>[0]: <a href=\"https:&#x2F;&#x2F;payloadcms.com&#x2F;docs&#x2F;fields&#x2F;rich-text\" rel=\"nofollow\">https:&#x2F;&#x2F;payloadcms.com&#x2F;docs&#x2F;fields&#x2F;rich-text</a>\n[1]: <a href=\"https:&#x2F;&#x2F;docs.slatejs.org&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;docs.slatejs.org&#x2F;</a>",
+    "time": 1662066941,
+    "type": "comment"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/43159254.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 43159254,
+    "parent": 43150116,
+    "text": "At work we have two applications in production with Directus, a CMS and a CRM, both highly specialized (~35 custom extensions) for our use-cases.<p>We&#x27;ve had our teething issues, mostly with migrations and the UX in some areas, but overall it has saved us a ton of dev time and been a great force multiplier for us.<p>I also use it at home to manage my notes, tasks, and such as structured data.",
+    "time": 1740403410,
+    "type": "comment"
+  }
+}

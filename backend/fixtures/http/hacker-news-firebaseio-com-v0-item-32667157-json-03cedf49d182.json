@@ -1,0 +1,17 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/32667157.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 32667157,
+    "kids": [
+      32667235
+    ],
+    "parent": 32665325,
+    "text": "As someone who&#x27;s been actively looking for a headless CMS recently, I&#x27;m curious about how you compare yourselves to Contentful [1]?<p>From a quick look the key difference is that Payload&#x27;s backend can be self-hosted, but Contentful is SaaS only.<p>You&#x27;ve said that you&#x27;re targeting enterprise customers and mention an SLA in that respect. Does that mean your enterprise offering is also SaaS only?<p>[1] <a href=\"https:&#x2F;&#x2F;www.contentful.com&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.contentful.com&#x2F;</a>",
+    "time": 1661974199,
+    "type": "comment"
+  }
+}

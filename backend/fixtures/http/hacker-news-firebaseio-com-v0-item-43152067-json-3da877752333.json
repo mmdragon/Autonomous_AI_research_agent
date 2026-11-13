@@ -1,0 +1,14 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/43152067.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 43152067,
+    "parent": 43150116,
+    "text": "Had a play around with it, I&#x27;m impressed. I was very worried and put-off when I saw the nice-looking UI and flashy transitions, but this actually plays quite nicely with my database.<p>Unfortunately it doesn&#x27;t work on Firefox 115 ESR due to<p><pre><code>    Intl.Segmenter is not a constructor\n</code></pre>\nIt&#x27;s just a blank screen. So it is infected by the JS change treadmill somewhat.<p>I have a few other thoughts from my first try:<p>When using Directus on a pre-existing DB, your foreign keys need to have exactly the same type as the primary keys they are referencing for Directus to pick up on the relationship. For example, if you have `customer.id INT PRIMARY KEY`, you must reference it with `order.customer_id INT FOREIGN KEY REFERENCES customer (id)`. You cannot do `order.customer_id INT NOT NULL FOREIGN KEY REFERENCES customer (id)` , else Directus won&#x27;t notice.<p>I also found it fairly slow to pick up on schema changes I made in the DB directly, and I didn&#x27;t see an obvious way to force it to discover.<p>When using Directus to manage the DB schema, I found the tables it created to have a generally sane and simple schema, which is refreshing. I liked the choices here  more than nocodb.<p>I can&#x27;t comment on the REST&#x2F;GraphQL generation. I&#x27;m mainly interested in the admin panel features.<p>The compose file they provide here works: <a href=\"https:&#x2F;&#x2F;docs.directus.io&#x2F;self-hosted&#x2F;docker-guide.html\" rel=\"nofollow\">https:&#x2F;&#x2F;docs.directus.io&#x2F;self-hosted&#x2F;docker-guide.html</a><p>Overall I think this works best if your data model is very clean. It would probably be painful to onboard a complex legacy DB. I think this is totally fine as a small-scale org data management tool. I was going to make one of these, but I don&#x27;t need to now. Thanks for sharing.",
+    "time": 1740337460,
+    "type": "comment"
+  }
+}

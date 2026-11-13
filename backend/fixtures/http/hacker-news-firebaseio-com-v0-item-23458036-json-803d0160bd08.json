@@ -1,0 +1,17 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/23458036.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 23458036,
+    "kids": [
+      23459206
+    ],
+    "parent": 23453530,
+    "text": "Question for the connaisseurs, what is the deference between this and something like Hasura for crud rest&#x2F;ql api&#x27;s ?",
+    "time": 1591633796,
+    "type": "comment"
+  }
+}

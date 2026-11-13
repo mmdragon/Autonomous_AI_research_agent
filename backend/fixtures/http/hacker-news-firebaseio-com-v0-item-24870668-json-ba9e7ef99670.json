@@ -1,0 +1,16 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/24870668.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "descendants": 0,
+    "id": 24870668,
+    "score": 8,
+    "time": 1603467705,
+    "title": "Powering JavaScript Sites with Sanity CMS and Spirit Fish",
+    "type": "story",
+    "url": "https://www.spirit.fish/blog/working-with-sanity"
+  }
+}

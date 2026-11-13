@@ -1,0 +1,51 @@
+{
+  "request_url": "https://en.wikipedia.org/w/api.php?action=query&exintro=1&exlimit=max&explaintext=1&format=json&formatversion=2&generator=search&gsrlimit=5&gsrnamespace=0&gsrsearch=Strapi&inprop=url&maxlag=5&prop=extracts|info&redirects=1",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "batchcomplete": true,
+    "query": {
+      "pages": [
+        {
+          "pageid": 347136,
+          "ns": 0,
+          "title": "List of TCP and UDP port numbers",
+          "index": 1,
+          "extract": "This is a list of TCP and UDP port numbers used by protocols for operation of network applications. The Transmission Control Protocol (TCP) and the User Datagram Protocol (UDP) only need one port for bidirectional traffic. TCP usually uses port numbers that match the services of the corresponding UDP implementations, if they exist, and vice versa.\nThe Internet Assigned Numbers Authority (IANA) is responsible for maintaining the official assignments of port numbers for specific uses. However, many unofficial uses of both well-known and registered port numbers occur in practice. Similarly, many of the official assignments refer to protocols that were never or are no longer in common use. This article lists port numbers and their associated protocols that have experienced significant uptake.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T05:19:14Z",
+          "lastrevid": 1385417109,
+          "length": 336269,
+          "fullurl": "https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=List_of_TCP_and_UDP_port_numbers&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers"
+        },
+        {
+          "pageid": 51611002,
+          "ns": 0,
+          "title": "Headless content management system",
+          "index": 2,
+          "extract": "A headless content management system, or headless CMS, is a back end-only web content management system that acts primarily as a content repository. A headless CMS makes content accessible via an API for display on any device, without a built-in front end or presentation layer. \nWhereas a traditional CMS typically combines a website's content and presentation layers, a headless CMS comprises the content component and focuses on the administrative interface for content creators, the facilitation of content workflows and collaboration, and the organization of content into taxonomies.\nCloud-first headless CMS's are those that were also built with a multi-tenant cloud model at their core and whose vendors promote software as a service (SaaS). These vendors promise high availability, scalability, and full management of security, upgrades, and hotfixes on behalf of clients. Headless commerce uses the same setup to separate back-end product management and navigation from the front end of a website or other display types (e.g., IoT). This is similar to how headless CMS's focus on creating content in the back end to be displayed on front ends via APIs.\n\n",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-08T21:32:08Z",
+          "lastrevid": 1381765806,
+          "length": 12621,
+          "fullurl": "https://en.wikipedia.org/wiki/Headless_content_management_system",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Headless_content_management_system&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Headless_content_management_system"
+        }
+      ]
+    },
+    "limits": {
+      "extracts": 20
+    }
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "request_url": "https://hn.algolia.com/api/v1/search?hitsPerPage=5&query=Strapi&tags=story",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json"
+  },
+  "json": {
+    "exhaustive": {
+      "nbHits": true,
+      "typo": true
+    },
+    "exhaustiveNbHits": true,
+    "exhaustiveTypo": true,
+    "hits": [
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "strapi"
+            ],
+            "value": "<em>Strapi</em> – Open-source Node.js Headless CMS"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "strapi"
+            ],
+            "value": "https://<em>strapi</em>.io/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_jhabdas",
+          "story_23453530"
+        ],
+        "children": [
+          23454201,
+          23454799,
+          23454851,
+          23454951,
+          23455082,
+          23455284,
+          23455325,
+          23455360,
+          23455550,
+          23455715,
+          23455725,
+          23455774,
+          23455813,
+          23455852,
+          23456094,
+          23456194,
+          23457195,
+          23457245,
+          23457378,
+          23457422,
+          23458036,
+          23458708,
+          23458770,
+          23459898,
+          23461209,
+          23461433
+        ],
+        "created_at": "2020-06-08T04:21:41Z",
+        "created_at_i": 1591590101,
+        "num_comments": 68,
+        "objectID": "23453530",
+        "points": 106,
+        "story_id": 23453530,
+        "title": "Strapi – Open-source Node.js Headless CMS",
+        "updated_at": "2024-10-21T18:23:11Z",
+        "url": "https://strapi.io/"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "strapi"
+            ],
+            "value": "How to Build a Notion Clone with <em>Strapi</em> v4 and Next.js (Part 1 of 2)"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "strapi"
+            ],
+            "value": "https://<em>strapi</em>.io/blog/how-to-build-a-notion-clone-with-<em>strapi</em>-v4-and-next-js-part-1-of-2"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_dessireugarte",
+          "story_31825676"
+        ],
+        "children": [
+          31826605,
+          31827624,
+          31827802,
+          31831460
+        ],
+        "created_at": "2022-06-21T16:17:20Z",
+        "created_at_i": 1655828240,
+        "num_comments": 8,
+        "objectID": "31825676",
+        "points": 46,
+        "story_id": 31825676,
+        "title": "How to Build a Notion Clone with Strapi v4 and Next.js (Part 1 of 2)",
+        "updated_at": "2024-09-20T11:24:03Z",
+        "url": "https://strapi.io/blog/how-to-build-a-notion-clone-with-strapi-v4-and-next-js-part-1-of-2"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "strapi"
+            ],
+            "value": "APIs in less than 5 minutes with <em>Strapi</em>"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "strapi"
+            ],
+            "value": "https://www.infracloud.io/<em>strapi</em>-api-quickstart/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_infracloudio",
+          "story_22543666"
+        ],
+        "children": [
+          22543973,
+          22543979,
+          22544139,
+          22544255
+        ],
+        "created_at": "2020-03-11T06:48:43Z",
+        "created_at_i": 1583909323,
+        "num_comments": 14,
+        "objectID": "22543666",
+        "points": 32,
+        "story_id": 22543666,
+        "title": "APIs in less than 5 minutes with Strapi",
+        "updated_at": "2024-10-07T23:26:05Z",
+        "url": "https://www.infracloud.io/strapi-api-quickstart/"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "strapi"
+            ],
+            "value": "<em>Strapi</em> raises $4M for their open-source Headless CMS"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "strapi"
+            ],
+            "value": "https://<em>strapi</em>.io/blog/announcing-<em>strapi</em>-4m-seed-funding-round"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_pierreburgy",
+          "story_21260968"
+        ],
+        "children": [
+          21260975,
+          21261031,
+          21261221,
+          21261320,
+          21262244,
+          21264381,
+          21266332,
+          21270461
+        ],
+        "created_at": "2019-10-15T17:14:48Z",
+        "created_at_i": 1571159688,
+        "num_comments": 10,
+        "objectID": "21260968",
+        "points": 31,
+        "story_id": 21260968,
+        "title": "Strapi raises $4M for their open-source Headless CMS",
+        "updated_at": "2024-10-07T23:26:05Z",
+        "url": "https://strapi.io/blog/announcing-strapi-4m-seed-funding-round"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "strapi"
+            ],
+            "value": "<em>Strapi</em> v3.6 with Internationalization"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "strapi"
+            ],
+            "value": "https://<em>strapi</em>.io/blog/announcing-content-internationalization-v3-6"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_vcoisne",
+          "story_26907099"
+        ],
+        "children": [
+          26907148,
+          26923061
+        ],
+        "created_at": "2021-04-22T19:31:24Z",
+        "created_at_i": 1619119884,
+        "num_comments": 2,
+        "objectID": "26907099",
+        "points": 17,
+        "story_id": 26907099,
+        "title": "Strapi v3.6 with Internationalization",
+        "updated_at": "2024-09-20T08:22:15Z",
+        "url": "https://strapi.io/blog/announcing-content-internationalization-v3-6"
+      }
+    ],
+    "hitsPerPage": 5,
+    "nbHits": 11224,
+    "nbPages": 200,
+    "page": 0,
+    "params": "query=Strapi&tags=story&hitsPerPage=5&advancedSyntax=true&analyticsTags=backend",
+    "processingTimeMS": 7,
+    "processingTimingsMS": {
+      "_request": {
+        "roundTrip": 14
+      },
+      "fetch": {
+        "query": 2,
+        "scanning": 3,
+        "total": 6
+      },
+      "total": 7
+    },
+    "query": "Strapi",
+    "serverTimeMS": 7
+  }
+}

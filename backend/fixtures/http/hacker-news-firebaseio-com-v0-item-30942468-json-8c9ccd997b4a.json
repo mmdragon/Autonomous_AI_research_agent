@@ -1,0 +1,17 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/30942468.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 30942468,
+    "kids": [
+      30942506
+    ],
+    "parent": 30928639,
+    "text": "I spent quite a bit of time optimizing my main website. Lighthouse was the primary tool because it&#x27;s easily available in most browsers. webpagetest.org is another test option that partially overlaps with Lighthouse.<p>Eventually performance of my site got to be pretty good. If nothing else going through the procedures to make improvements has been quite educational. With all the discussion around energy costs due to web inefficiency doing something to reduce wasteful cycles feels like a small but definite contribution.<p>Interestingly I used Lighthouse to measure many websites other than my own. I mean, why not see what the &quot;big guys&quot; are doing? Incredibly disappointing to say the least. Almost all sites have been poor performers, some scoring 25 or less on the performance section of Lighthouse. I won&#x27;t name names but really it&#x27;s shameful to preach efficiency and then perform so badly.<p>The article makes some good points and anyway LCP is the biggest single factor (weighted at 30%) of the total performance score, so it makes a lot of sense to focus on reducing LCP first.",
+    "time": 1649324481,
+    "type": "comment"
+  }
+}

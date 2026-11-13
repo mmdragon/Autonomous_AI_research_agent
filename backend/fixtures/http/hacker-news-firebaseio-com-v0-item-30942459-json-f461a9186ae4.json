@@ -1,0 +1,14 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/30942459.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 30942459,
+    "parent": 30928639,
+    "text": "Wish there was some kind of tutorial with tips about web vitals. It feels overwhelming trying to catch up with all these little nuances.",
+    "time": 1649324359,
+    "type": "comment"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/43151069.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 43151069,
+    "kids": [
+      43154952
+    ],
+    "parent": 43150116,
+    "text": "Microsoft has something very similar (i did not do a full feature comparison, just speaking about apis and auth) which is mit licensed. Works also with on-prem databases despite it&#x27;s name. <a href=\"https:&#x2F;&#x2F;github.com&#x2F;Azure&#x2F;data-api-builder\">https:&#x2F;&#x2F;github.com&#x2F;Azure&#x2F;data-api-builder</a>",
+    "time": 1740331035,
+    "type": "comment"
+  }
+}

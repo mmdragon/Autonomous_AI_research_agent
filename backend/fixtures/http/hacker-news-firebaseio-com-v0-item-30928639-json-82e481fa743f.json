@@ -1,0 +1,21 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/30928639.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "descendants": 11,
+    "id": 30928639,
+    "kids": [
+      30942468,
+      30941974,
+      30942459
+    ],
+    "score": 45,
+    "time": 1649220980,
+    "title": "Optimising Largest Contentful Paint",
+    "type": "story",
+    "url": "https://csswizardry.com/2022/03/optimising-largest-contentful-paint/"
+  }
+}

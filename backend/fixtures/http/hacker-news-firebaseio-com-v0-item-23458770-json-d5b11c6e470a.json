@@ -1,0 +1,17 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/23458770.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 23458770,
+    "kids": [
+      23461021
+    ],
+    "parent": 23453530,
+    "text": "Another good open source cms is Directus - <a href=\"https:&#x2F;&#x2F;directus.io&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;directus.io&#x2F;</a>",
+    "time": 1591638235,
+    "type": "comment"
+  }
+}

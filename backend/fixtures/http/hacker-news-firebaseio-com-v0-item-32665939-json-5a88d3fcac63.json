@@ -1,0 +1,21 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/32665939.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 32665939,
+    "kids": [
+      32666326,
+      32668608,
+      32692502,
+      32666184,
+      32666004
+    ],
+    "parent": 32665325,
+    "text": "Nice job getting to launch. However I&#x27;m really confused about the value prop.<p>&gt;  There&#x27;s no point competing in that noisy market, so we&#x27;re undercutting it instead, by treating developers as first-class citizens.<p>Who is the target market for this? who are the users and what is the job function in their company?<p>The vast majority of CMS use is by Marketing departments building the public web presence of their company. Marketing doesn&#x27;t care about building or maintaining their own CMS, or making it easy for developers. In fact, those are costs they want to minimize and externalize.<p>Speed of creating, editing, reviewing, and publishing content is the most important thing. Integrating the site into the hundreds of mar-tech tools is also important (e.g. gating content for sales leads, funnel analytics, mailing list signup and validation, A&#x2F;B testing, etc)<p>Large CMSs are pretty optimized for the create-review-publish flow, and I don&#x27;t see you explain any advantage you provide here. Mar-tech companies live or die on adoption, so they invest heavily in making plugins for CMSs. Something they are not going to do for Payload. Why would marketing pay for internal developers to do this integration (regardless of how easy it is) when they get that for free with plugins to existing systems, written by the engineers of those systems?<p>In short, none of the benefits you cite at all align with the KPIs of a marketing department using a CMS (typical engagement numbers like time-on-site or page views, but also marketing-generated or marketing-influenced leads and opportunities)<p>And as an engineer who has built multiple SaaS apps, I&#x27;ve never needed CMS capabilities built into those apps. The closest need would be the help&#x2F;documentation&#x2F;API spec, which we&#x27;ve traditionally addressed using another site or SaaS app (e.g. a third party helpdesk or knowledge base SaaS).<p>Hence why I&#x27;m a little confused, but do want to be positive. Who is your ideal customer, why, what business problems do they have, and why is Payload the best option to those problems?",
+    "time": 1661968674,
+    "type": "comment"
+  }
+}

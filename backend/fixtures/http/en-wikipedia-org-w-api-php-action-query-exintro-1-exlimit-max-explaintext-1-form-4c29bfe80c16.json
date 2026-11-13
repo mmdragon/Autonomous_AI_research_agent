@@ -1,0 +1,106 @@
+{
+  "request_url": "https://en.wikipedia.org/w/api.php?action=query&exintro=1&exlimit=max&explaintext=1&format=json&formatversion=2&generator=search&gsrlimit=5&gsrnamespace=0&gsrsearch=Directus&inprop=url&maxlag=5&prop=extracts|info&redirects=1",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "batchcomplete": true,
+    "continue": {
+      "gsroffset": 5,
+      "continue": "gsroffset||"
+    },
+    "query": {
+      "pages": [
+        {
+          "pageid": 5223171,
+          "ns": 0,
+          "title": "Atlantic jackknife clam",
+          "index": 1,
+          "extract": "The Atlantic jackknife clam, Ensis leei, also known as the bamboo clam, American jackknife clam or razor clam, is a large edible marine bivalve mollusc found on the North American Atlantic coast, from Canada to South Carolina. The species was also introduced to Europe at the end of the 1970's and is already extremely abundant there in suitable habitats. The name \"razor clam\" is also used to refer to different species such as the Pacific razor clam (Siliqua patula) or Razor shell (Ensis magnus).\nJackknife clams live in sand and mud and are found in intertidal or subtidal zones in bays and estuaries. Its streamlined shell and strong foot allow Jackknife clams to burrow quickly in wet sand. Jackknife clams are also able to swim by propelling jets of water out of their shells. The Jackknife clam gets its name from its shell's extremely sharp rim and the overall shape bearing a strong resemblance to an old fashioned straight razor. Beachgoers can be injured when the shell is accidentally stepped on.\nThus the species is not often commercially fished, even though it is widely regarded as a delicacy: in coastal Massachusetts, they are sought after in the summer by locals to make home cooked clam strips and most towns have ordinances regulating how many can be taken at a time. The easiest way to catch jackknives is to pour salt on the characteristic breathing holes. The clam will try to escape the salt by coming up out of its hole, at which point you can gently grab the shell and pull it out of the ground.\nPredators of Ensis directus other than humans include birds, such as the ring-billed gull (Larus delawarensis) in North America and the Eurasian oystercatcher (Haematopus ostralegus) in Europe, and the nemertean worm Cerebratulus lacteus.\nThe Atlantic jackknife clam is now also found in northwestern Europe, where it is regarded as a harmful exotic species, but is also commercially exploited. It was first recorded in Europe in 1978/79, in the Elbe estuary.\nThe Atlantic jackknife clam has inspired a kind of biomimetic anchor in development by a team at the Massachusetts Institute of Technology, adapting the clam's digging method for use in keeping undersea cables and potentially watercraft anchored securely.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:12:41Z",
+          "lastrevid": 1369427898,
+          "length": 5864,
+          "fullurl": "https://en.wikipedia.org/wiki/Atlantic_jackknife_clam",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Atlantic_jackknife_clam&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Atlantic_jackknife_clam"
+        },
+        {
+          "pageid": 18949668,
+          "ns": 0,
+          "title": "Law",
+          "index": 4,
+          "extract": "Law is a set of rules that are created and enforced by governmental or societal institutions to regulate behavior, with its precise definition a matter of longstanding debate. It has been variously described as a science and as the art of justice. State-enforced laws can be made by a legislature, resulting in statutes; by the executive through decrees and regulations; or by judges' decisions, which form precedent in common law jurisdictions. An autocrat may exercise those functions within their realm. The creation of laws themselves may be influenced by a constitution, written or tacit, and the rights encoded therein. The law shapes politics, economics, history, and society in various ways and also serves as a mediator of relations between people.\nLegal systems vary between jurisdictions, with their differences analysed in comparative law. In civil law jurisdictions, a legislature or other central body codifies and consolidates the law. In common law systems, judges may make binding case law through precedent, although on occasion this may be overturned by a higher court or the legislature. Religious law is in use in some religious communities and states, and has historically influenced secular law.\nThe scope of law can be divided into two domains: public law concerns government and society, including constitutional law, administrative law, and criminal law; private law deals with legal disputes between parties in areas such as contracts, property, torts, delicts and commercial law.\nThis distinction is stronger in civil law countries, particularly those with a separate system of administrative courts; by contrast, the public-private law divide is less pronounced in common law jurisdictions.\nLaw provides a source of scholarly inquiry into legal history, philosophy, economic analysis and sociology. Law also raises important and complex issues concerning equality, fairness, and justice.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:19:38Z",
+          "lastrevid": 1383037590,
+          "length": 141820,
+          "fullurl": "https://en.wikipedia.org/wiki/Law",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Law&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Law"
+        },
+        {
+          "pageid": 37157333,
+          "ns": 0,
+          "title": "Acrolophus directus",
+          "index": 3,
+          "extract": "Acrolophus directus is a moth of the family Acrolophidae. It is found in Mexico.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:26:59Z",
+          "lastrevid": 998781427,
+          "length": 483,
+          "fullurl": "https://en.wikipedia.org/wiki/Acrolophus_directus",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Acrolophus_directus&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Acrolophus_directus"
+        },
+        {
+          "pageid": 57326314,
+          "ns": 0,
+          "title": "Notiophilus directus",
+          "index": 5,
+          "extract": "Notiophilus directus, the straight big-eyed beetle, is a species of ground beetle in the family Carabidae. It is found in North America (Alberta, British Columbia, Arizona, California, Colorado, Idaho, Montana, New Mexico, Oregon, Utah, Washington, Wyoming), where it inhabits moraines or areas near brooks and lakes.\nAdults are wing-dimorphic, with some being macropterous and others brachypterous.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:33:29Z",
+          "lastrevid": 1351438888,
+          "length": 2441,
+          "fullurl": "https://en.wikipedia.org/wiki/Notiophilus_directus",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Notiophilus_directus&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Notiophilus_directus"
+        },
+        {
+          "pageid": 84390850,
+          "ns": 0,
+          "title": "Gastrobothrus directus",
+          "index": 2,
+          "extract": "Gastrobothrus directus is a species of beetle of the family Staphylinidae. It is found in New Zealand (North Island).",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-08T02:30:42Z",
+          "lastrevid": 1378010393,
+          "length": 2167,
+          "fullurl": "https://en.wikipedia.org/wiki/Gastrobothrus_directus",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Gastrobothrus_directus&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Gastrobothrus_directus"
+        }
+      ]
+    },
+    "limits": {
+      "extracts": 20
+    }
+  }
+}

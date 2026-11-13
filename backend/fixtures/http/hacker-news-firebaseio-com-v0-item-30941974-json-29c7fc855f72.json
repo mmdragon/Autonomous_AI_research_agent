@@ -1,0 +1,23 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/30941974.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 30941974,
+    "kids": [
+      30942262,
+      30942600,
+      30942534,
+      30942426,
+      30943774,
+      30942094,
+      30944007
+    ],
+    "parent": 30928639,
+    "text": "I genuinely don&#x27;t understand all these Core Web Vital optimisation things - do people really care if a site takes 3 seconds to load instead of 1 second? All these little &quot;use this tag with this attribute and only when halfway down a page&quot; or whatever, is just ... odd to me.<p>It seems to be a very specific thing for very specific sites, to squeeze out a small performance increase, which could be cancelled out by any number of factors anyway.<p>For instance, the &#x2F;only&#x2F; thing I did for our work site was to strip down the JS&#x2F;CSS to what is actually needed, compress the images (and serve webp as well) ... and that was it. The same as I&#x27;ve been doing for 20 years. And according to <a href=\"https:&#x2F;&#x2F;pagespeed.web.dev\" rel=\"nofollow\">https:&#x2F;&#x2F;pagespeed.web.dev</a> it gets a 98% of desktop and 92% on mobile.<p>The one I &#x2F;am&#x2F; down for, is not having the site load 10mb+ of assets to just look at a couple of images and text! (I&#x27;m looking at you, Wix and others) - that is just insane!<p>If the site hasn&#x27;t loaded any content I can read after 5 seconds or so, I&#x27;m gonna hit refresh and give it another go, 5 more seconds and I&#x27;ll close it out and either come back later or just move on - but maybe thats because I remember 28kbps internet, or maybe Im just mellowing with age :)<p>I guess there must be a use for all these things, but I personally can&#x27;t see where the reward is &gt; than effort",
+    "time": 1649319391,
+    "type": "comment"
+  }
+}

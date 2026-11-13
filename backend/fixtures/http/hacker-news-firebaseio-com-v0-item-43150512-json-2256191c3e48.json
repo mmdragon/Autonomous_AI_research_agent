@@ -1,0 +1,19 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/43150512.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 43150512,
+    "kids": [
+      43152325,
+      43150668,
+      43150865
+    ],
+    "parent": 43150116,
+    "text": "seems cool, but weird non-oss license ahead warning.",
+    "time": 1740328043,
+    "type": "comment"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "request_url": "https://en.wikipedia.org/w/api.php?action=query&explaintext=1&format=json&formatversion=2&inprop=url&maxlag=5&prop=extracts|info&redirects=1&titles=Contentful",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "batchcomplete": true,
+    "query": {
+      "pages": [
+        {
+          "pageid": 68023633,
+          "ns": 0,
+          "title": "Contentful",
+          "extract": "Contentful is a German-American headless content management system (CMS), founded in 2013 in Berlin, Germany, by Sascha Konietzke and Paolo Negri. The company and the platform are both called Contentful. \nAs of June 2021, the company is headquartered in San Francisco, California, with offices in Denver (Colorado), New York, Berlin, Sydney, and London.\n\n\n== History ==\nThe company was founded in 2013 and released the first beta of its software platform that same year. A previous version of the platform was named \"Storageroom\". While the company often shies away from the terms \"headless\" and content management system, it is widely considered a headless CMS platform.\nIn 2018, the company raised a series D round of financing of $35.5 million  from OMERS, Benchmark, Balderton Capital, General Catalyst, Sapphire Ventures and the venture arm of customer relationship management software company, Salesforce.\nIn 2019, CB Insights, in an article in The New York Times, predicted that Contentful would become a startup unicorn, valued at more than one billion USD.\nIn June 2020, Contentful raised a series E round of financing of $80 million from venture capital funds Sapphire Ventures, General Catalyst and Salesforce Ventures.\nIn March 2021, Contentful created an online marketplace for third-party apps as well as apps built by the company, all using the Contentful platform. At the same time, the company made its APIs publicly available to promote the creation of more apps.\nIn July 2021, Contentful raised a series F round of financing of $175 million led by the private equity arm of the hedge fund Tiger Global at a valuation of $3 billion.\nIn August 2024, Contentful acquires Ninetailed  bringing AI-driven personalization capabilities to the platform.\nIn June 2026, Contentful was acquired by Salesforce.\n\n\n== Clients ==\nNotable Contentful clients include IKEA, Jack in the Box, Cancer Research UK, the British Museum, Spotify, Red Bull, Twilio, Intercom, Inc.,  KFC, On,  Kraft Heinz, and Urban Outfitters.\n\n\n== References ==",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-08T02:22:17Z",
+          "lastrevid": 1383850768,
+          "length": 7578,
+          "fullurl": "https://en.wikipedia.org/wiki/Contentful",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Contentful&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Contentful"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "request_url": "https://en.wikipedia.org/w/api.php?action=query&exintro=1&exlimit=max&explaintext=1&format=json&formatversion=2&generator=search&gsrlimit=5&gsrnamespace=0&gsrsearch=Payload CMS&inprop=url&maxlag=5&prop=extracts|info&redirects=1",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "batchcomplete": true,
+    "continue": {
+      "gsroffset": 5,
+      "continue": "gsroffset||"
+    },
+    "query": {
+      "pages": [
+        {
+          "pageid": 38827896,
+          "ns": 0,
+          "title": "Antares A-ONE",
+          "index": 3,
+          "extract": "Antares A-ONE mission was the maiden flight of Orbital Sciences Corporation' Antares launch vehicle including the ascent to space and accurate delivery of a simulated payload, the Cygnus Mass Simulator (CMS), which was launched 21 April 2013. It was launched from Pad 0A at the Mid-Atlantic Regional Spaceport (MARS), Wallops Flight Facility, Virginia. The boilerplate payload simulated the mass of the Cygnus cargo spacecraft. This dummy payload was sent into an orbit of 223 km × 237 km (139 mi × 147 mi) with an orbital inclination of 51.63°, the same launch profile it will use for Orbital's Cygnus cargo supply missions to the International Space Station (ISS) for NASA.\nThis launch along with several other activities leading up to it, are paid milestones under NASA's Commercial Orbital Transportation Services (COTS) program.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:27:34Z",
+          "lastrevid": 1351584104,
+          "length": 11110,
+          "fullurl": "https://en.wikipedia.org/wiki/Antares_A-ONE",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Antares_A-ONE&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Antares_A-ONE"
+        },
+        {
+          "pageid": 62867378,
+          "ns": 0,
+          "title": "GSAT-7R",
+          "index": 1,
+          "extract": "GSAT-7R (also known as CMS-03) is a multi-band communication satellite developed by ISRO for the Indian Navy. The satellite is meant to replace the existing and operational GSAT-7.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:35:04Z",
+          "lastrevid": 1380548372,
+          "length": 11546,
+          "fullurl": "https://en.wikipedia.org/wiki/GSAT-7R",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=GSAT-7R&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/GSAT-7R"
+        },
+        {
+          "pageid": 65509270,
+          "ns": 0,
+          "title": "CMS-01",
+          "index": 2,
+          "extract": "CMS-01 (formerly known as GSAT-12R) is a communication satellite designed and developed by the Indian Space Research Organisation (ISRO). This satellite is a replacement of the aging GSAT-12 at 83.0° E. This satellite was successfully launched by  PSLV-C50 launch vehicle  on 17 December 2020 at 10:11 UTC.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:35:45Z",
+          "lastrevid": 1325389854,
+          "length": 5787,
+          "fullurl": "https://en.wikipedia.org/wiki/CMS-01",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=CMS-01&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/CMS-01"
+        },
+        {
+          "pageid": 70128485,
+          "ns": 0,
+          "title": "PSLV-C50",
+          "index": 4,
+          "extract": "The PSLV-C50 is the 52nd mission of the Indian Polar Satellite Launch Vehicle (PSLV) and 22nd flight of PSLV in 'XL' configuration. The Polar Satellite Launch Vehicle (PSLV)-C50 was launched successfully from the second launch pad, Satish Dhawan Space Centre at 10:11 (UTC) /15:41 (IST) carrying CMS-01 Communication Satellite.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:37:20Z",
+          "lastrevid": 1330462808,
+          "length": 2802,
+          "fullurl": "https://en.wikipedia.org/wiki/PSLV-C50",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=PSLV-C50&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/PSLV-C50"
+        },
+        {
+          "pageid": 79041624,
+          "ns": 0,
+          "title": "NVS-02",
+          "index": 5,
+          "extract": "NVS-02 is the second satellite in the NVS series and the eleventh satellite in the Indian Regional Navigation Satellite System (IRNSS), with an alternate name of IRNSS-1K, equipped with navigation payloads in L1, L5, and S bands, as well as a ranging payload in C-band. The vehicle is based on the conventional I-2K bus platform, with a lift-off mass of 2250 kg and a power handling capacity of approximately 3 kW. It was planned to replace  IRNSS-1E at the orbital slot of 111.75° East.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:40:23Z",
+          "lastrevid": 1385255729,
+          "length": 10348,
+          "fullurl": "https://en.wikipedia.org/wiki/NVS-02",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=NVS-02&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/NVS-02"
+        }
+      ]
+    },
+    "limits": {
+      "extracts": 20
+    }
+  }
+}

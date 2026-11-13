@@ -1,0 +1,20 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/43150985.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 43150985,
+    "kids": [
+      43152431,
+      43151013,
+      43154941,
+      43151351
+    ],
+    "parent": 43150116,
+    "text": "Directus has its small-scale and short term benefits, but I can’t recommend building a production-grade app with it. My company uses Directus and we all hate it and are desperately trying to get away from it. Avoid.",
+    "time": 1740330649,
+    "type": "comment"
+  }
+}

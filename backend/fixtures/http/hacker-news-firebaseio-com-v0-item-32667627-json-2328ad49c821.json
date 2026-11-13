@@ -1,0 +1,19 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/32667627.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 32667627,
+    "kids": [
+      32667743,
+      32667654,
+      32691191
+    ],
+    "parent": 32665325,
+    "text": "We have a Next.js website with a blog section that&#x27;s powered by Sanity. Problem is, it&#x27;s pretty finicky to install basic components that we like to use (which looks like Payload comes with out of the box) + communicating with Sanity via groq is clunky with Typescript (and possibly causing some SEO issues).<p>How simple is it to install Payload in an existing Next.js app to power basically just the &#x2F;blog&#x2F;* subdirectory?",
+    "time": 1661976255,
+    "type": "comment"
+  }
+}

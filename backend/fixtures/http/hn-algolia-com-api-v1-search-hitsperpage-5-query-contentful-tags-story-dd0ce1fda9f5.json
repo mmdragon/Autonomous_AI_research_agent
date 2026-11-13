@@ -1,0 +1,235 @@
+{
+  "request_url": "https://hn.algolia.com/api/v1/search?hitsPerPage=5&query=Contentful&tags=story",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json"
+  },
+  "json": {
+    "exhaustive": {
+      "nbHits": false,
+      "typo": false
+    },
+    "exhaustiveNbHits": false,
+    "exhaustiveTypo": false,
+    "hits": [
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "contentful"
+            ],
+            "value": "Optimising Largest <em>Contentful</em> Paint"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "contentful"
+            ],
+            "value": "https://csswizardry.com/2022/03/optimising-largest-<em>contentful</em>-paint/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_jicea",
+          "story_30928639"
+        ],
+        "children": [
+          30941974,
+          30942459,
+          30942468
+        ],
+        "created_at": "2022-04-06T04:56:20Z",
+        "created_at_i": 1649220980,
+        "num_comments": 11,
+        "objectID": "30928639",
+        "points": 45,
+        "story_id": 30928639,
+        "title": "Optimising Largest Contentful Paint",
+        "updated_at": "2024-09-20T10:51:07Z",
+        "url": "https://csswizardry.com/2022/03/optimising-largest-contentful-paint/"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "contentful"
+            ],
+            "value": "Largest <em>Contentful</em> Paint"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "contentful"
+            ],
+            "value": "https://web.dev/largest-<em>contentful</em>-paint/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_feross",
+          "story_20681193"
+        ],
+        "children": [
+          20693620,
+          20694315,
+          20695662,
+          20696899,
+          20697058
+        ],
+        "created_at": "2019-08-12T23:23:11Z",
+        "created_at_i": 1565652191,
+        "num_comments": 20,
+        "objectID": "20681193",
+        "points": 44,
+        "story_id": 20681193,
+        "title": "Largest Contentful Paint",
+        "updated_at": "2024-09-20T04:41:20Z",
+        "url": "https://web.dev/largest-contentful-paint/"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "contentful"
+            ],
+            "value": "<em>Contentful</em>, a Stripe for content management, raises $28M led by General Catalyst"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "contentful"
+            ],
+            "value": "https://techcrunch.com/2017/12/04/<em>contentful</em>-a-stripe-for-content-management-raises-28m-led-by-general-catalyst/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_realityking",
+          "story_15853193"
+        ],
+        "children": [
+          15853463,
+          15855720,
+          15855931,
+          15856027,
+          15856064,
+          15856191,
+          15856257,
+          15856300,
+          15856382
+        ],
+        "created_at": "2017-12-05T17:09:23Z",
+        "created_at_i": 1512493763,
+        "num_comments": 34,
+        "objectID": "15853193",
+        "points": 40,
+        "story_id": 15853193,
+        "title": "Contentful, a Stripe for content management, raises $28M led by General Catalyst",
+        "updated_at": "2024-11-10T22:24:17Z",
+        "url": "https://techcrunch.com/2017/12/04/contentful-a-stripe-for-content-management-raises-28m-led-by-general-catalyst/"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "contentful"
+            ],
+            "value": "Show HN: <em>Contentful</em>-based email content editor"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "contentful"
+            ],
+            "value": "https://github.com/bandraszyk/<em>contentful</em>-emails"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_sedzia",
+          "story_13210570",
+          "show_hn"
+        ],
+        "children": [
+          13214090
+        ],
+        "created_at": "2016-12-19T10:23:20Z",
+        "created_at_i": 1482143000,
+        "num_comments": 1,
+        "objectID": "13210570",
+        "points": 28,
+        "story_id": 13210570,
+        "title": "Show HN: Contentful-based email content editor",
+        "updated_at": "2024-09-20T00:05:09Z",
+        "url": "https://github.com/bandraszyk/contentful-emails"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "contentful"
+            ],
+            "value": "Show HN: DatoCMS – An alternative to <em>Contentful</em> for static websites"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://www.datocms.com/?src=cta"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_steffoz",
+          "story_14649238",
+          "show_hn"
+        ],
+        "children": [
+          14650648,
+          14651432,
+          14651935
+        ],
+        "created_at": "2017-06-27T20:44:34Z",
+        "created_at_i": 1498596274,
+        "num_comments": 7,
+        "objectID": "14649238",
+        "points": 16,
+        "story_id": 14649238,
+        "title": "Show HN: DatoCMS – An alternative to Contentful for static websites",
+        "updated_at": "2025-12-01T15:16:25Z",
+        "url": "https://www.datocms.com/?src=cta"
+      }
+    ],
+    "hitsPerPage": 5,
+    "nbHits": 187,
+    "nbPages": 38,
+    "page": 0,
+    "params": "query=Contentful&tags=story&hitsPerPage=5&advancedSyntax=true&analyticsTags=backend",
+    "processingTimeMS": 4,
+    "processingTimingsMS": {
+      "_request": {
+        "roundTrip": 26
+      },
+      "fetch": {
+        "query": 3,
+        "total": 4
+      },
+      "total": 5
+    },
+    "query": "Contentful",
+    "serverTimeMS": 5
+  }
+}

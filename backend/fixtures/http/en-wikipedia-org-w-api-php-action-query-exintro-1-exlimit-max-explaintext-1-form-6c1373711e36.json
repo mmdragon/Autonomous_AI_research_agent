@@ -1,0 +1,106 @@
+{
+  "request_url": "https://en.wikipedia.org/w/api.php?action=query&exintro=1&exlimit=max&explaintext=1&format=json&formatversion=2&generator=search&gsrlimit=5&gsrnamespace=0&gsrsearch=Contentful&inprop=url&maxlag=5&prop=extracts|info&redirects=1",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "batchcomplete": true,
+    "continue": {
+      "gsroffset": 5,
+      "continue": "gsroffset||"
+    },
+    "query": {
+      "pages": [
+        {
+          "pageid": 30734754,
+          "ns": 0,
+          "title": "Web performance",
+          "index": 2,
+          "extract": "Web performance refers to the speed in which web pages are downloaded and displayed on the user's web browser. Web performance optimization (WPO), or website optimization is the field of knowledge about increasing web performance.\nFaster website download speeds have been shown to increase visitor retention and loyalty and user satisfaction, especially for users with slow internet connections and those on mobile devices. Web performance also leads to less data travelling across the web, which in turn lowers a website's power consumption and environmental impact. Some aspects which can affect the speed of page load include browser/server cache, image optimization, and encryption (for example SSL), which can affect the time it takes for pages to render. The performance of the web page can be improved through techniques such as multi-layered cache, light weight design of presentation layer components and asynchronous communication with server side components.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-08T02:02:01Z",
+          "lastrevid": 1378673645,
+          "length": 16857,
+          "fullurl": "https://en.wikipedia.org/wiki/Web_performance",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Web_performance&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Web_performance"
+        },
+        {
+          "pageid": 51611002,
+          "ns": 0,
+          "title": "Headless content management system",
+          "index": 5,
+          "extract": "A headless content management system, or headless CMS, is a back end-only web content management system that acts primarily as a content repository. A headless CMS makes content accessible via an API for display on any device, without a built-in front end or presentation layer. \nWhereas a traditional CMS typically combines a website's content and presentation layers, a headless CMS comprises the content component and focuses on the administrative interface for content creators, the facilitation of content workflows and collaboration, and the organization of content into taxonomies.\nCloud-first headless CMS's are those that were also built with a multi-tenant cloud model at their core and whose vendors promote software as a service (SaaS). These vendors promise high availability, scalability, and full management of security, upgrades, and hotfixes on behalf of clients. Headless commerce uses the same setup to separate back-end product management and navigation from the front end of a website or other display types (e.g., IoT). This is similar to how headless CMS's focus on creating content in the back end to be displayed on front ends via APIs.\n\n",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-08T21:32:08Z",
+          "lastrevid": 1381765806,
+          "length": 12621,
+          "fullurl": "https://en.wikipedia.org/wiki/Headless_content_management_system",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Headless_content_management_system&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Headless_content_management_system"
+        },
+        {
+          "pageid": 59685476,
+          "ns": 0,
+          "title": "Lighthouse (software)",
+          "index": 3,
+          "extract": "Lighthouse is an open-source, automated tool for measuring the quality of web pages developed by Google. It can be run against any web page, public or requiring authentication. Lighthouse audits performance, accessibility, and search engine optimization factors of web pages, which is the major difference from Google PageSpeed, as Lighthouse provides more detailed technical information. It also includes the ability to test progressive web applications for compliance with standards and best practices. Lighthouse aims to help web developers; the tool can be run using a Chrome browser extension or via the terminal (command line) for batch auditing a list of URLs. Google's recommendation is to use the online version of PageSpeed Insights as of 15 May 2015. \nLighthouse [Version 10 - May 2023] includes a metric for Progressive Web Applications to ensure that PWAs are fast, reliable, installable, and optimized for modern mobile technology. \nLighthouse can audit webpages in both desktop and mobile versions. In command line mode, developers are able to select specific factors to audit and configure other options using arguments.\n\nRecent versions of Lighthouse offer insights into how to optimize the Core Web Vitals metrics, which serve as user experience and performance signals used by Google's search algorithm to rank pages, as announced by Google engineer Addy Osmani in 2021. Google uses three primary parameters to measure Core Web Vitals compliance:\n\nLargest Contentful Paint (LCP): Measures loading performance, targeting the point when the page's main content has likely loaded.\nCumulative Layout Shift (CLS): Measures visual stability by detecting unexpected layout shifts during the page lifecycle.\nInteraction to Next Paint (INP): Measures overall user interaction responsiveness. On 10 May 2023, Google announced that INP would replace the older First Input Delay (FID) metric to capture the total time taken for all user interactions rather than just the first one. This change officially went into effect in March 2024.\nLighthouse also calculates Total Blocking Time (TBT), which serves as an excellent lab proxy for evaluating responsiveness issues during page loading.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:34:08Z",
+          "lastrevid": 1358421424,
+          "length": 6666,
+          "fullurl": "https://en.wikipedia.org/wiki/Lighthouse_(software)",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Lighthouse_(software)&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Lighthouse_(software)"
+        },
+        {
+          "pageid": 66071501,
+          "ns": 0,
+          "title": "Hydration (web development)",
+          "index": 4,
+          "extract": "In web development, hydration or rehydration is a technique in which client-side JavaScript converts a web page that is static from the perspective of the web browser, delivered either through static rendering or server-side rendering, into a dynamic web page by attaching event handlers to the HTML elements in the DOM. Because the HTML is pre-rendered on a server, this allows for a fast \"first contentful paint\" (when useful data is first displayed to the user), but there is a period of time afterward where the page appears to be fully loaded and interactive, but is not until the client-side JavaScript is executed and event handlers have been attached.\nFrameworks that use hydration include Next.js and Nuxt. React v16.0 introduced a \"hydrate\" function, which hydrates an element, in its API.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:35:53Z",
+          "lastrevid": 1383569648,
+          "length": 5811,
+          "fullurl": "https://en.wikipedia.org/wiki/Hydration_(web_development)",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Hydration_(web_development)&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Hydration_(web_development)"
+        },
+        {
+          "pageid": 68023633,
+          "ns": 0,
+          "title": "Contentful",
+          "index": 1,
+          "extract": "Contentful is a German-American headless content management system (CMS), founded in 2013 in Berlin, Germany, by Sascha Konietzke and Paolo Negri. The company and the platform are both called Contentful. \nAs of June 2021, the company is headquartered in San Francisco, California, with offices in Denver (Colorado), New York, Berlin, Sydney, and London.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-08T02:22:17Z",
+          "lastrevid": 1383850768,
+          "length": 7578,
+          "fullurl": "https://en.wikipedia.org/wiki/Contentful",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Contentful&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Contentful"
+        }
+      ]
+    },
+    "limits": {
+      "extracts": 20
+    }
+  }
+}

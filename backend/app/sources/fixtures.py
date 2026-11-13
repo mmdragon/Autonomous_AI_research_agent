@@ -8,6 +8,7 @@ Fixtures recorded from live APIs keep their real content; never hand-edit record
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -16,9 +17,21 @@ import httpx2 as httpx
 
 from app.sources.http import PermanentSourceError
 
+# Usernames are personal data we never store; they are removed before a fixture is written.
+SCRUBBED_KEYS = frozenset({"author", "by"})
+
 
 class FixtureMissingError(PermanentSourceError):
     pass
+
+
+def scrub(value: object) -> object:
+    """Recursively drop username fields (HN `by`, Algolia `author` incl. highlight results)."""
+    if isinstance(value, dict):
+        return {k: scrub(v) for k, v in value.items() if k not in SCRUBBED_KEYS}
+    if isinstance(value, list):
+        return [scrub(v) for v in value]
+    return value
 
 
 def canonical_url(url: httpx.URL | str) -> str:
@@ -76,17 +89,23 @@ class RecordingTransport(httpx.BaseTransport):
             },
         }
         if "json" in content_type:
-            fixture["json"] = json.loads(body)
+            fixture["json"] = scrub(json.loads(body))
+            body = json.dumps(fixture["json"]).encode()  # caller sees what replay will serve
         else:
             fixture["text"] = body.decode(response.encoding or "utf-8", errors="replace")
-        slug = re.sub(r"[^a-z0-9]+", "-", key.lower().split("://", 1)[-1])[:120].strip("-")
+        # Readable prefix plus a hash of the full key, so long URLs never collide.
+        readable = re.sub(r"[^a-z0-9]+", "-", key.lower().split("://", 1)[-1])[:80].strip("-")
+        slug = f"{readable}-{hashlib.sha256(key.encode()).hexdigest()[:12]}"
         self.out_dir.mkdir(parents=True, exist_ok=True)
         (self.out_dir / f"{slug}.json").write_text(
             json.dumps(fixture, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
         )
-        return httpx.Response(
-            response.status_code, headers=response.headers, content=body, request=request
-        )
+        headers = {
+            k: v
+            for k, v in response.headers.items()
+            if k.lower() not in {"content-length", "content-encoding"}
+        }
+        return httpx.Response(response.status_code, headers=headers, content=body, request=request)
 
     def close(self) -> None:
         self.inner.close()

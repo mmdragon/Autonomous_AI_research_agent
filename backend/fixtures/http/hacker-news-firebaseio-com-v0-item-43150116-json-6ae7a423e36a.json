@@ -1,0 +1,33 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/43150116.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "descendants": 61,
+    "id": 43150116,
+    "kids": [
+      43150985,
+      43151069,
+      43152067,
+      43159254,
+      43150512,
+      43153732,
+      43151534,
+      43152604,
+      43154760,
+      43153740,
+      43152217,
+      43151391,
+      43152634,
+      43153376,
+      43150855
+    ],
+    "score": 72,
+    "time": 1740325871,
+    "title": "Directus – real-time REST and GraphQL API of any SQL database",
+    "type": "story",
+    "url": "https://github.com/directus/directus"
+  }
+}

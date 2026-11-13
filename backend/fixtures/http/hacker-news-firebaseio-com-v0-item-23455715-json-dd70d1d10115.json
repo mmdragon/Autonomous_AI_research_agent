@@ -1,0 +1,14 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/23455715.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 23455715,
+    "parent": 23453530,
+    "text": "To summarise what makes this nice:<p>1. Define a schema in an admin panel.<p>2. Get a free REST or GraphQL API for CRUD operations and a nice role based UI to manage the data.",
+    "time": 1591617180,
+    "type": "comment"
+  }
+}

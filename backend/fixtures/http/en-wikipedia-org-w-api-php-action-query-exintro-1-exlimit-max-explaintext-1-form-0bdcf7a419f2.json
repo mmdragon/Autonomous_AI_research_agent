@@ -1,0 +1,106 @@
+{
+  "request_url": "https://en.wikipedia.org/w/api.php?action=query&exintro=1&exlimit=max&explaintext=1&format=json&formatversion=2&generator=search&gsrlimit=5&gsrnamespace=0&gsrsearch=headless content management system&inprop=url&maxlag=5&prop=extracts|info&redirects=1",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "batchcomplete": true,
+    "continue": {
+      "gsroffset": 5,
+      "continue": "gsroffset||"
+    },
+    "query": {
+      "pages": [
+        {
+          "pageid": 75885,
+          "ns": 0,
+          "title": "Content management system",
+          "index": 2,
+          "extract": "A content management system (CMS) is a computer software used to create, manage, modify, and publish digital content (content management). It is commonly used for enterprise content management (ECM), which integrates functions such as document management, digital asset management, and records retention for collaborative use within organizations. It is also used for web content management (WCM), which enables the collaborative creation and maintenance of websites containing text, images, video, audio, maps, and other digital media.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:07:03Z",
+          "lastrevid": 1383368243,
+          "length": 12858,
+          "fullurl": "https://en.wikipedia.org/wiki/Content_management_system",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Content_management_system&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Content_management_system"
+        },
+        {
+          "pageid": 1853838,
+          "ns": 0,
+          "title": "Web content management system",
+          "index": 3,
+          "extract": "A web content management system (WCM or WCMS) is a software content management system (CMS) specifically for web content. It provides website authoring, collaboration, and administration tools that help users with little knowledge of web programming languages or markup languages create and manage website content.  A WCMS provides the foundation for collaboration, providing users the ability to manage documents and output for multiple author editing and participation.  Most systems use a content repository or a database to store page content, metadata, and other information assets the system needs.\nA presentation layer (template engine) displays the content to website visitors based on a set of templates, which are sometimes XSLT files.\nMost systems use server side caching to improve performance.  This works best when the WCMS is not changed often but visits happen frequently.  Administration is also typically done through browser-based interfaces, but some systems require the use of a fat client.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:09:49Z",
+          "lastrevid": 1377350287,
+          "length": 13201,
+          "fullurl": "https://en.wikipedia.org/wiki/Web_content_management_system",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Web_content_management_system&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Web_content_management_system"
+        },
+        {
+          "pageid": 51611002,
+          "ns": 0,
+          "title": "Headless content management system",
+          "index": 1,
+          "extract": "A headless content management system, or headless CMS, is a back end-only web content management system that acts primarily as a content repository. A headless CMS makes content accessible via an API for display on any device, without a built-in front end or presentation layer. \nWhereas a traditional CMS typically combines a website's content and presentation layers, a headless CMS comprises the content component and focuses on the administrative interface for content creators, the facilitation of content workflows and collaboration, and the organization of content into taxonomies.\nCloud-first headless CMS's are those that were also built with a multi-tenant cloud model at their core and whose vendors promote software as a service (SaaS). These vendors promise high availability, scalability, and full management of security, upgrades, and hotfixes on behalf of clients. Headless commerce uses the same setup to separate back-end product management and navigation from the front end of a website or other display types (e.g., IoT). This is similar to how headless CMS's focus on creating content in the back end to be displayed on front ends via APIs.\n\n",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-08T21:32:08Z",
+          "lastrevid": 1381765806,
+          "length": 12621,
+          "fullurl": "https://en.wikipedia.org/wiki/Headless_content_management_system",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Headless_content_management_system&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Headless_content_management_system"
+        },
+        {
+          "pageid": 67100525,
+          "ns": 0,
+          "title": "Headless commerce",
+          "index": 5,
+          "extract": "Headless commerce is an e-commerce architecture where the front-end (head) is decoupled from the back-end commerce functionality and can thus be updated or edited without interfering with the back-end, similar to a headless content management system (CMS). The term was coined by Dirk Hoerig, co-founder of Commercetools, in 2013.\n\n",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-08T02:21:44Z",
+          "lastrevid": 1379885007,
+          "length": 16948,
+          "fullurl": "https://en.wikipedia.org/wiki/Headless_commerce",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Headless_commerce&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Headless_commerce"
+        },
+        {
+          "pageid": 68023633,
+          "ns": 0,
+          "title": "Contentful",
+          "index": 4,
+          "extract": "Contentful is a German-American headless content management system (CMS), founded in 2013 in Berlin, Germany, by Sascha Konietzke and Paolo Negri. The company and the platform are both called Contentful. \nAs of June 2021, the company is headquartered in San Francisco, California, with offices in Denver (Colorado), New York, Berlin, Sydney, and London.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-08T02:22:17Z",
+          "lastrevid": 1383850768,
+          "length": 7578,
+          "fullurl": "https://en.wikipedia.org/wiki/Contentful",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Contentful&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Contentful"
+        }
+      ]
+    },
+    "limits": {
+      "extracts": 20
+    }
+  }
+}

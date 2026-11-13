@@ -53,7 +53,8 @@ title, retrieved-at timestamp (UTC), excerpt, the exact normalized content and i
 
 **Offline fixtures.** With `SOURCES_MODE=fixtures` (the default), requests are answered from
 recorded responses in `backend/fixtures/http/`; anything not recorded fails with a clear error
-instead of touching the network. To record real responses (makes live, rate-limited calls; needs
+instead of touching the network. Recorded files drop HN usernames (`author`, `by`) and keep
+only the `content-type` header. To record real responses (makes live, rate-limited calls; needs
 `HTTP_USER_AGENT` with your contact in `backend/.env`):
 
 ```bash
@@ -98,6 +99,9 @@ quotes text that really appears in a stored source.
 
 - No research workflow yet (Phase 3); adapters are not exposed over the API.
 - No general web search: only Wikipedia, Hacker News, and URLs/documents you supply.
-- `backend/fixtures/http/` is empty until you record fixtures.
+- Recorded fixtures cover one headless-CMS task (Wikipedia: headless CMS, Strapi, Contentful,
+  Sanity CMS, Directus, Payload CMS; HN: headless CMS, Strapi, Contentful, Sanity CMS, Directus),
+  recorded 2026-11-13. Wikipedia search returns some off-topic pages for product names; that is
+  real API behavior, kept on purpose.
 - URL safety checks resolve DNS before the request, so a hostile DNS server could rebind in
   between. Acceptable for a local tool you drive yourself.
