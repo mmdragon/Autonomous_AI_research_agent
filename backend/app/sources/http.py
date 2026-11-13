@@ -118,6 +118,7 @@ class HttpClient:
         self.backoff_base = backoff_base
         self.max_bytes = max_bytes
         self.sleep = sleep
+        self.request_count = 0  # every HTTP request sent, including retries
         self.rate_limiter = RateLimiter(min_interval, clock=clock, sleep=sleep)
         self._client = httpx.Client(
             headers={"User-Agent": user_agent, "Accept-Encoding": "gzip"},
@@ -190,6 +191,7 @@ class HttpClient:
     ) -> FetchedResponse:
         request = self._client.build_request("GET", url, params=params, headers=headers)
         self.rate_limiter.wait(request.url.host)
+        self.request_count += 1
         response = self._client.send(request, stream=True)
         try:
             declared = response.headers.get("content-length")

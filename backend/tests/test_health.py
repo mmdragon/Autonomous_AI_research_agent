@@ -52,3 +52,30 @@ def test_foreign_keys_enforced(tmp_path):
     except sqlite3.IntegrityError:
         return
     raise AssertionError("step without a run should be rejected")
+
+
+def test_v1_database_is_migrated(tmp_path):
+    path = tmp_path / "v1.sqlite3"
+    conn = sqlite3.connect(path)
+    conn.executescript(
+        """
+        CREATE TABLE research_runs (id TEXT PRIMARY KEY, user_task TEXT NOT NULL,
+            request_json TEXT NOT NULL, status TEXT NOT NULL, error TEXT,
+            created_at TEXT NOT NULL, completed_at TEXT);
+        CREATE TABLE tool_calls (id TEXT PRIMARY KEY, run_id TEXT NOT NULL, step_id TEXT,
+            tool TEXT NOT NULL, request TEXT NOT NULL, status TEXT NOT NULL,
+            result_count INTEGER, error TEXT, attempts INTEGER NOT NULL DEFAULT 1,
+            started_at TEXT NOT NULL, duration_ms INTEGER);
+        INSERT INTO research_runs VALUES ('r1', 'old task', '{}', 'completed', NULL, 't', NULL);
+        PRAGMA user_version = 1;
+        """
+    )
+    conn.close()
+    init_db(path)
+    with transaction(path) as conn:
+        runs = {r[1] for r in conn.execute("PRAGMA table_info(research_runs)")}
+        calls = {r[1] for r in conn.execute("PRAGMA table_info(tool_calls)")}
+        assert conn.execute("SELECT user_task FROM research_runs").fetchone()[0] == "old task"
+    assert "state_json" in runs
+    assert "http_requests" in calls and "attempts" not in calls
+    assert check_db(path)

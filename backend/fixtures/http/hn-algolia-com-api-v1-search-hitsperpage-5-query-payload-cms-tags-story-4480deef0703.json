@@ -1,0 +1,244 @@
+{
+  "request_url": "https://hn.algolia.com/api/v1/search?hitsPerPage=5&query=Payload CMS&tags=story",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json"
+  },
+  "json": {
+    "exhaustive": {
+      "nbHits": false,
+      "typo": false
+    },
+    "exhaustiveNbHits": false,
+    "exhaustiveTypo": false,
+    "hits": [
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "payload",
+              "cms"
+            ],
+            "value": "<em>PayloadCMS</em>: Open-Source, Fullstack Next.js Framework"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "payload",
+              "cms"
+            ],
+            "value": "https://github.com/<em>payloadcms</em>/<em>payload</em>"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_stefankuehnel",
+          "story_41839994"
+        ],
+        "children": [
+          41840608,
+          41840765,
+          41840820,
+          41840828,
+          41840940,
+          41842250,
+          41843035,
+          41845786,
+          41846062,
+          41846106,
+          41846865,
+          41848142,
+          41848364,
+          41848733,
+          41849100,
+          41849756,
+          41850226,
+          41855877
+        ],
+        "created_at": "2024-10-14T17:55:13Z",
+        "created_at_i": 1728928513,
+        "num_comments": 84,
+        "objectID": "41839994",
+        "points": 214,
+        "story_id": 41839994,
+        "title": "PayloadCMS: Open-Source, Fullstack Next.js Framework",
+        "updated_at": "2026-09-03T16:23:18Z",
+        "url": "https://github.com/payloadcms/payload"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "payload",
+              "cms"
+            ],
+            "value": "Open Source Angular, <em>Payload</em> <em>CMS</em> and Pulumi AWS Theme Boilerplate"
+          },
+          "url": {
+            "matchLevel": "none",
+            "matchedWords": [],
+            "value": "https://binarystarter.com/"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_florinmtsc",
+          "story_40178516"
+        ],
+        "children": [
+          40178517
+        ],
+        "created_at": "2024-04-27T09:07:48Z",
+        "created_at_i": 1714208868,
+        "num_comments": 1,
+        "objectID": "40178516",
+        "points": 8,
+        "story_id": 40178516,
+        "title": "Open Source Angular, Payload CMS and Pulumi AWS Theme Boilerplate",
+        "updated_at": "2024-09-20T16:56:08Z",
+        "url": "https://binarystarter.com/"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "payload",
+              "cms"
+            ],
+            "value": "Dev-first headless <em>CMS</em> <em>Payload</em> is now completely free and open-source"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "payload",
+              "cms"
+            ],
+            "value": "https://<em>payloadcms</em>.com/blog/open-source"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_sneek_",
+          "story_31492141"
+        ],
+        "created_at": "2022-05-24T13:55:13Z",
+        "created_at_i": 1653400513,
+        "num_comments": 0,
+        "objectID": "31492141",
+        "points": 8,
+        "story_id": 31492141,
+        "title": "Dev-first headless CMS Payload is now completely free and open-source",
+        "updated_at": "2024-09-20T11:14:49Z",
+        "url": "https://payloadcms.com/blog/open-source"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "payload",
+              "cms"
+            ],
+            "value": "Show HN: <em>Payload CMS</em>–a new, self-hosted TypeScript <em>CMS</em>"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "payload",
+              "cms"
+            ],
+            "value": "https://<em>payloadcms</em>.com/blog/introducing-<em>payload</em>-2021s-node-react-headless-<em>cms</em>-for-javascript-developers"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_sneek_",
+          "story_26315122",
+          "show_hn"
+        ],
+        "children": [
+          26315123,
+          26325456
+        ],
+        "created_at": "2021-03-02T13:36:49Z",
+        "created_at_i": 1614692209,
+        "num_comments": 3,
+        "objectID": "26315122",
+        "points": 7,
+        "story_id": 26315122,
+        "title": "Show HN: Payload CMS–a new, self-hosted TypeScript CMS",
+        "updated_at": "2024-09-20T08:00:36Z",
+        "url": "https://payloadcms.com/blog/introducing-payload-2021s-node-react-headless-cms-for-javascript-developers"
+      },
+      {
+        "_highlightResult": {
+          "title": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "payload",
+              "cms"
+            ],
+            "value": "<em>Payloadcms</em> v3.0.0"
+          },
+          "url": {
+            "fullyHighlighted": false,
+            "matchLevel": "full",
+            "matchedWords": [
+              "payload",
+              "cms"
+            ],
+            "value": "https://github.com/<em>payloadcms</em>/<em>payload</em>/releases"
+          }
+        },
+        "_tags": [
+          "story",
+          "author_lavren1974",
+          "story_42179812"
+        ],
+        "children": [
+          42179822
+        ],
+        "created_at": "2024-11-19T03:19:54Z",
+        "created_at_i": 1731986394,
+        "num_comments": 1,
+        "objectID": "42179812",
+        "points": 5,
+        "story_id": 42179812,
+        "title": "Payloadcms v3.0.0",
+        "updated_at": "2024-12-02T19:36:41Z",
+        "url": "https://github.com/payloadcms/payload/releases"
+      }
+    ],
+    "hitsPerPage": 5,
+    "nbHits": 168,
+    "nbPages": 34,
+    "page": 0,
+    "params": "query=Payload+CMS&tags=story&hitsPerPage=5&advancedSyntax=true&analyticsTags=backend",
+    "processingTimeMS": 15,
+    "processingTimingsMS": {
+      "_request": {
+        "queue": 66,
+        "roundTrip": 13
+      },
+      "fetch": {
+        "query": 8,
+        "scanning": 6,
+        "total": 15
+      },
+      "total": 15
+    },
+    "query": "Payload CMS",
+    "serverTimeMS": 82
+  }
+}

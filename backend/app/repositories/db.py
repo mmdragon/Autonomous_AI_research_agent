@@ -7,7 +7,7 @@ from collections.abc import Iterator
 from contextlib import contextmanager
 from pathlib import Path
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 # Timestamps are ISO-8601 UTC strings. JSON-ish fields are stored as TEXT.
 _SCHEMA = """
@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS research_runs (
     request_json  TEXT NOT NULL,          -- topic, questions, source count, output format
     status        TEXT NOT NULL,          -- pending | running | completed | failed
     error         TEXT,
+    state_json    TEXT,                   -- WorkflowState, saved after each completed stage
     created_at    TEXT NOT NULL,
     completed_at  TEXT
 );
@@ -42,10 +43,10 @@ CREATE TABLE IF NOT EXISTS tool_calls (
     step_id      TEXT REFERENCES research_steps (id) ON DELETE CASCADE,
     tool         TEXT NOT NULL,
     request      TEXT NOT NULL,
-    status       TEXT NOT NULL,           -- ok | error | rate_limited | blocked
+    status       TEXT NOT NULL,           -- ok | error | blocked
     result_count INTEGER,
     error        TEXT,
-    attempts     INTEGER NOT NULL DEFAULT 1,
+    http_requests INTEGER NOT NULL DEFAULT 0, -- HTTP requests made, including retries
     started_at   TEXT NOT NULL,
     duration_ms  INTEGER
 );
@@ -118,9 +119,17 @@ def init_db(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with connect(path) as conn:
         conn.execute("PRAGMA journal_mode = WAL")
+        version = conn.execute("PRAGMA user_version").fetchone()[0]
+        if version == 1:
+            _migrate_v1_to_v2(conn)
         conn.executescript(_SCHEMA)
         conn.execute(f"PRAGMA user_version = {SCHEMA_VERSION}")
     conn.close()
+
+
+def _migrate_v1_to_v2(conn: sqlite3.Connection) -> None:
+    conn.execute("ALTER TABLE research_runs ADD COLUMN state_json TEXT")
+    conn.execute("ALTER TABLE tool_calls RENAME COLUMN attempts TO http_requests")
 
 
 @contextmanager

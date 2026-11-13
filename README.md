@@ -4,10 +4,8 @@ A local-first research assistant. It takes a scoped research task, plans the ste
 public sources (Wikipedia, Hacker News, URLs and documents you provide), maps claims to stored
 evidence, flags gaps and conflicts, and writes a Markdown report with source links.
 
-Status: **Phase 2 (source adapters)**. The API serves a health check and creates the SQLite
-schema; the source adapters are implemented and tested. The workflow and research UI come in
-later phases. See
-[docs/PLAN.md](docs/PLAN.md).
+Status: **Phase 3 (workflow engine)**. Research runs execute end to end over the API in mock
+mode, offline by default. The research UI comes in Phase 5. See [docs/PLAN.md](docs/PLAN.md).
 
 ## Stack
 
@@ -64,11 +62,46 @@ cd backend && uv run python -m scripts.record_fixtures "headless CMS" "Strapi" -
 Unit tests use the synthetic fixtures in `backend/tests/fixtures/http/` and never call live APIs.
 An opt-in live smoke test runs with `RUN_LIVE_TESTS=1 uv run pytest`.
 
+## Workflow
+
+One orchestrator ([backend/app/workflows/engine.py](backend/app/workflows/engine.py)) runs five
+stages in order. Each stage execution is a stored `research_steps` row, and the run state is
+saved after every completed stage, so a failed run resumes from the stage that failed.
+
+| Stage | Mock implementation |
+|---|---|
+| plan | One question per entity × attribute, plus your free-form questions; deduplicated Wikipedia / HN / URL queries |
+| research | Search each query, fetch the top result in full, store sources round-robin across queries (dedupe by URL and content hash) |
+| analyze | Purely extractive: copies sentences that name the entity and match the attribute's keywords, with exact offsets. Nothing found → an explicit unknown |
+| verify | Drops any span whose quote isn't at those offsets in the stored source. *Supported* needs a non-community source; Hacker News only → unknown |
+| write | Markdown with comparison matrix, findings, unknowns, conflicts, and a source list built only from stored records |
+
+**Limits** (backend/.env): `MAX_STEPS_PER_RUN`, `MAX_TOOL_CALLS_PER_RUN`, `MAX_SOURCES_PER_QUESTION`,
+`MAX_SOURCES_PER_RUN`, `MAX_RUN_SECONDS`, plus per-request `max_sources`. Hitting one fails the run
+with a clear message; resume continues where it stopped. Every tool call (including failures and
+blocked requests) is logged with its HTTP request count and duration. Runs interrupted by a server
+restart are marked failed at startup so they can be resumed.
+
+**Try it offline** with the recorded demo task:
+
+```bash
+curl -s -X POST localhost:8000/api/runs -H 'content-type: application/json' \
+  -d @docs/examples/headless-cms.json
+curl -s localhost:8000/api/runs/<id>/report.md
+```
+
 ## API
 
 | Method | Path | Description |
 |---|---|---|
 | GET | `/api/health` | API status, database status, LLM provider, sources mode |
+| POST | `/api/runs` | Start a run (202). Body: `topic`, optional `entities` (≤8), `attributes` (≤6), `questions` (≤5), `user_urls` (≤5), `max_sources` (1–25) |
+| GET | `/api/runs` | Run history, newest first |
+| GET | `/api/runs/{id}` | Status, plan, steps, sources (excerpts, no full text), claims with evidence spans |
+| GET | `/api/runs/{id}/tool-calls` | Activity log |
+| POST | `/api/runs/{id}/resume` | Resume a failed run (202); 409 otherwise |
+| GET | `/api/runs/{id}/report` | Latest report as JSON |
+| GET | `/api/runs/{id}/report.md` | Latest report as a Markdown download |
 
 Interactive docs: http://localhost:8000/docs
 
@@ -97,10 +130,15 @@ quotes text that really appears in a stored source.
 
 ## Limitations
 
-- No research workflow yet (Phase 3); adapters are not exposed over the API.
+- The mock analyst only finds sentences that literally name an entity and an attribute keyword;
+  it does not summarize, paraphrase or detect contradictions (Phase 4 adds contradiction checks).
+  For the demo task most cells end up *Unknown* or *community only*. That's the honest result
+  for what Wikipedia and Hacker News actually say, not a bug.
+- Runs execute in-process (FastAPI background tasks); there is no job queue.
 - No general web search: only Wikipedia, Hacker News, and URLs/documents you supply.
-- Recorded fixtures cover one headless-CMS task (Wikipedia: headless CMS, Strapi, Contentful,
-  Sanity CMS, Directus, Payload CMS; HN: headless CMS, Strapi, Contentful, Sanity CMS, Directus),
+- Recorded fixtures cover one headless-CMS task (Wikipedia: headless CMS, headless content
+  management system, Strapi, Contentful, Sanity CMS, Directus, Payload CMS; HN: headless CMS,
+  Strapi, Contentful, Sanity CMS, Directus, Payload CMS),
   recorded 2026-11-13. Wikipedia search returns some off-topic pages for product names; that is
   real API behavior, kept on purpose.
 - URL safety checks resolve DNS before the request, so a hostile DNS server could rebind in

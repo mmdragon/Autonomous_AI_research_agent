@@ -1,0 +1,36 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/41839994.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "descendants": 84,
+    "id": 41839994,
+    "kids": [
+      41840940,
+      41842250,
+      41840608,
+      41845786,
+      41848733,
+      41843035,
+      41846865,
+      41846062,
+      41840765,
+      41848142,
+      41840828,
+      41850226,
+      41849756,
+      41846106,
+      41855877,
+      41848364,
+      41849100,
+      41840820
+    ],
+    "score": 214,
+    "time": 1728928513,
+    "title": "PayloadCMS: Open-Source, Fullstack Next.js Framework",
+    "type": "story",
+    "url": "https://github.com/payloadcms/payload"
+  }
+}

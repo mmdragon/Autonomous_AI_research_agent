@@ -1,0 +1,18 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/41842250.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 41842250,
+    "kids": [
+      41845083,
+      41843274
+    ],
+    "parent": 41839994,
+    "text": "The pitch alone on PayloadCMS shows that this is still a developer-focused CMS. Just look at the difference between the github page, the Payload website, and wordpress.org&#x27;s landing. This is not purely a marketing difference but a strategic conversation.<p>I&#x27;m all about transitioning CMSes and yet WordPress has got the turnkey part of their open-source platform clear and easy to understand. You can self-host or choose a provider. Payload doesn&#x27;t make that clear, it&#x27;s either too dev-centric for running or wants you to &quot;Schedule a Demo&quot; (which is a way to capture enterprise dollars).<p>What about more consumer-friendly pitches and deployments? Any recommendations on that?",
+    "time": 1728941494,
+    "type": "comment"
+  }
+}

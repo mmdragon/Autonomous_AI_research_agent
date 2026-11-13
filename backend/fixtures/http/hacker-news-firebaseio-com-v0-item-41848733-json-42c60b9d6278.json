@@ -1,0 +1,17 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/41848733.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 41848733,
+    "kids": [
+      41848769
+    ],
+    "parent": 41839994,
+    "text": "In june evaluated PayloadCMS (v3 beta), Strapi and Sanity for powering an app with (30+ content types) and a website.<p>In the end i chose PayloadCMS. \n- I can programatically define content types in typescript\n- selfhosting\n- localization support.<p>Sanity:\n _Pros_: great DX, easy to start\n _Cons_: i was afraid of exploding bills, it felt a bit slow&#x2F;sluggish<p>STRAPI:\n_Pros_: open source, selfhostable, managed solution available, \n_Cons_: too much clicking in the UX, and having to write middleware to get related data.<p>So far I am pretty happy with PayloadCMS.",
+    "time": 1729001083,
+    "type": "comment"
+  }
+}

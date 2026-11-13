@@ -1,0 +1,6 @@
+{
+  "topic": "headless CMS",
+  "entities": ["Strapi", "Contentful", "Sanity CMS", "Directus", "Payload CMS"],
+  "attributes": ["content modeling", "API options", "integrations", "developer experience", "pricing"],
+  "max_sources": 15
+}

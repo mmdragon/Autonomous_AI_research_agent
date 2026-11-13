@@ -1,0 +1,17 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/41845786.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 41845786,
+    "kids": [
+      41848145
+    ],
+    "parent": 41839994,
+    "text": "PayloadCMS is looking really nice for us. However, for us a as a small non-profit organization with ~100 people having access to our systems the missing SSO feature (enterprise only) is really a blocker.<p>I understand what the idea is to make SSO an enterprise feature but I really think this hurts security for small and medium sized organizations as well (not only with this project, as this is a common pattern in my experience).",
+    "time": 1728976529,
+    "type": "comment"
+  }
+}

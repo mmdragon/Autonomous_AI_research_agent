@@ -1,0 +1,20 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/41840608.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 41840608,
+    "kids": [
+      41841176,
+      41840780,
+      41840997,
+      41842441
+    ],
+    "parent": 41839994,
+    "text": "So let me get this straight... PayloadCMS is a framework, for Next.js which is a framework for the React framework.<p>Yo dawg, i heard you like frameworks!",
+    "time": 1728931838,
+    "type": "comment"
+  }
+}

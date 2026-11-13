@@ -1,0 +1,106 @@
+{
+  "request_url": "https://en.wikipedia.org/w/api.php?action=query&exintro=1&exlimit=max&explaintext=1&format=json&formatversion=2&generator=search&gsrlimit=5&gsrnamespace=0&gsrsearch=headless CMS&inprop=url&maxlag=5&prop=extracts|info&redirects=1",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "batchcomplete": true,
+    "continue": {
+      "gsroffset": 5,
+      "continue": "gsroffset||"
+    },
+    "query": {
+      "pages": [
+        {
+          "pageid": 21310173,
+          "ns": 0,
+          "title": "Wix.com",
+          "index": 4,
+          "extract": "Wix.com Ltd. (Hebrew: ווִיקס.קוֹם, romanized: wix.com), or simply Wix, is an Israeli software company, publicly listed in the US, that provides cloud-based web development services. It offers tools for creating HTML5 websites for desktop and mobile platforms using online drag-and-drop editing. Along with its headquarters and other offices in Israel, Wix also has offices in Brazil, Canada, Germany, India, Ireland, Japan, Lithuania, Poland, the Netherlands, the United States, Ukraine, and Singapore.\nUsers can add applications for social media, e-commerce, online marketing, contact forms, email marketing, and community forums to their websites. The Wix website builder is built on a freemium business model, earning its revenues through premium upgrades. According to W3Techs, a technology survey website, Wix was used by 2.5% of websites as of September 2023; at the end of May 2025, it was 3.8%.\n\n",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-13T07:20:42Z",
+          "lastrevid": 1383617012,
+          "length": 45808,
+          "fullurl": "https://en.wikipedia.org/wiki/Wix.com",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Wix.com&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Wix.com"
+        },
+        {
+          "pageid": 39278886,
+          "ns": 0,
+          "title": "Headless software",
+          "index": 3,
+          "extract": "Headless software (e.g. \"headless Linux\",) is software capable of working on a device without a graphical user interface. Such software receives inputs and provides output through other interfaces like network or serial port and is common on servers and embedded devices.\nThe term \"headless\" is most often used when the ordinary version of the program requires that a graphics card or similar graphical interface device be present. For instance, the absence of a graphic card, mouse or keyboard may cause an initialization process that assumes their presence to fail, or the graphics card may be relied upon to build some offline image that is later served through network. Many apps can run \"headlessly\", including VLC Media Player.\nA headless computer (for example, and most commonly, a server) may be missing many of the system libraries that support the display of graphical interfaces. Software that expects these libraries may fail to start or even to compile if such libraries are not present.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-10T18:51:58Z",
+          "lastrevid": 1370991557,
+          "length": 5786,
+          "fullurl": "https://en.wikipedia.org/wiki/Headless_software",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Headless_software&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Headless_software"
+        },
+        {
+          "pageid": 51611002,
+          "ns": 0,
+          "title": "Headless content management system",
+          "index": 1,
+          "extract": "A headless content management system, or headless CMS, is a back end-only web content management system that acts primarily as a content repository. A headless CMS makes content accessible via an API for display on any device, without a built-in front end or presentation layer. \nWhereas a traditional CMS typically combines a website's content and presentation layers, a headless CMS comprises the content component and focuses on the administrative interface for content creators, the facilitation of content workflows and collaboration, and the organization of content into taxonomies.\nCloud-first headless CMS's are those that were also built with a multi-tenant cloud model at their core and whose vendors promote software as a service (SaaS). These vendors promise high availability, scalability, and full management of security, upgrades, and hotfixes on behalf of clients. Headless commerce uses the same setup to separate back-end product management and navigation from the front end of a website or other display types (e.g., IoT). This is similar to how headless CMS's focus on creating content in the back end to be displayed on front ends via APIs.\n\n",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-08T21:32:08Z",
+          "lastrevid": 1381765806,
+          "length": 12621,
+          "fullurl": "https://en.wikipedia.org/wiki/Headless_content_management_system",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Headless_content_management_system&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Headless_content_management_system"
+        },
+        {
+          "pageid": 67100525,
+          "ns": 0,
+          "title": "Headless commerce",
+          "index": 5,
+          "extract": "Headless commerce is an e-commerce architecture where the front-end (head) is decoupled from the back-end commerce functionality and can thus be updated or edited without interfering with the back-end, similar to a headless content management system (CMS). The term was coined by Dirk Hoerig, co-founder of Commercetools, in 2013.\n\n",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-08T02:21:44Z",
+          "lastrevid": 1379885007,
+          "length": 16948,
+          "fullurl": "https://en.wikipedia.org/wiki/Headless_commerce",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Headless_commerce&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Headless_commerce"
+        },
+        {
+          "pageid": 68023633,
+          "ns": 0,
+          "title": "Contentful",
+          "index": 2,
+          "extract": "Contentful is a German-American headless content management system (CMS), founded in 2013 in Berlin, Germany, by Sascha Konietzke and Paolo Negri. The company and the platform are both called Contentful. \nAs of June 2021, the company is headquartered in San Francisco, California, with offices in Denver (Colorado), New York, Berlin, Sydney, and London.",
+          "contentmodel": "wikitext",
+          "pagelanguage": "en",
+          "pagelanguagehtmlcode": "en",
+          "pagelanguagedir": "ltr",
+          "touched": "2026-11-08T02:22:17Z",
+          "lastrevid": 1383850768,
+          "length": 7578,
+          "fullurl": "https://en.wikipedia.org/wiki/Contentful",
+          "editurl": "https://en.wikipedia.org/w/index.php?title=Contentful&action=edit",
+          "canonicalurl": "https://en.wikipedia.org/wiki/Contentful"
+        }
+      ]
+    },
+    "limits": {
+      "extracts": 20
+    }
+  }
+}

@@ -4,9 +4,10 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import health
+from app.api import health, runs
 from app.config import Settings, get_settings
 from app.repositories.db import init_db
+from app.repositories.runs import RunRepository
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -15,6 +16,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @asynccontextmanager
     async def lifespan(_: FastAPI) -> AsyncIterator[None]:
         init_db(settings.database_path)
+        # Background runs don't survive a restart; mark them failed so they can be resumed.
+        RunRepository(settings.database_path).fail_interrupted_runs()
         yield
 
     app = FastAPI(
@@ -31,6 +34,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     )
     app.dependency_overrides[get_settings] = lambda: settings
     app.include_router(health.router, prefix="/api")
+    app.include_router(runs.router, prefix="/api")
     return app
 
 

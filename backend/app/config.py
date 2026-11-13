@@ -34,6 +34,7 @@ class Settings(BaseSettings):
     max_sources_per_question: int = 5
     max_sources_per_run: int = 25
     max_run_seconds: int = 300
+    max_tool_calls_per_run: int = 60
     max_fetch_bytes: int = 2 * 1024 * 1024
 
 

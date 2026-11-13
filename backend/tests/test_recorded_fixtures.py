@@ -11,8 +11,14 @@ from app.sources.registry import build_source_tools
 
 RECORDED = BACKEND_ROOT / "fixtures" / "http"
 FILES = sorted(RECORDED.glob("*.json"))
-WIKI_QUERIES = ["headless content management system", "Strapi", "Contentful", "Sanity CMS",
-                "Directus", "Payload CMS"]  # fmt: skip
+WIKI_QUERIES = [
+    "headless content management system",
+    "Strapi",
+    "Contentful",
+    "Sanity CMS",
+    "Directus",
+    "Payload CMS",
+]
 HN_QUERIES = ["headless CMS", "Strapi", "Contentful", "Sanity CMS", "Directus"]
 EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 

@@ -1,0 +1,19 @@
+{
+  "request_url": "https://hacker-news.firebaseio.com/v0/item/41840940.json",
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "json": {
+    "id": 41840940,
+    "kids": [
+      41850296,
+      41843109,
+      41842928
+    ],
+    "parent": 41839994,
+    "text": "I&#x27;ve been using Payload for 18 months. They&#x27;re only recently (with the upcoming v3 release) really piggy-backing on Next.js&#x27; server and routing. Before that, it was &quot;just&quot; a really nice headless CMS built on Node&#x2F;TypeScript.<p>This was obviously posted in the wake of the WordPress drama, but I landed on Payload while feeling stagnant after 10+ years building on WordPress. Everything else I was doing was 100% TypeScript, my entire professional career had been working with metadata driven data structure, I felt right at home with Payload.<p>It&#x27;s just enough structure (full admin area, API, GraphQL) to make scaffolding a basic site (with authentication) quite easy. I had built an app using Next 13 before Payload began integrating directly and using the local API (versus making HTTP calls to a server endpoint) is very clean. It feels like WordPress (i.e. you&#x27;re editing &quot;client&quot; code on the &quot;server&quot;) but with a LOT less cruft.<p>Because it&#x27;s headless, anything goes on the front end. One big reason that WP got so big was because of the theming capabilities. Payload has extensibility by way of plugins, but it&#x27;s (obviously...) not as robust as what&#x27;s available in the WP plugin repo. It&#x27;ll be interesting to see how these alternatives fare against the more prescriptive tools like Ghost (which does support theming, but does not support custom fields in any way, shape, or form).<p>That being said, I&#x27;m all in on Payload moving forward. If you&#x27;re curious, go straight to the v3 beta -- it&#x27;s very close to release and plenty stable, in my opinion. Happy to answer questions.<p>(Not affiliated with Payload, just a big admirer of their work)",
+    "time": 1728933832,
+    "type": "comment"
+  }
+}
