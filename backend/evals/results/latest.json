@@ -1,0 +1,746 @@
+[
+  {
+    "task": "cms-comparison",
+    "passed": true,
+    "repeatable": true,
+    "checks": [
+      {
+        "name": "status is completed",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "report saved = True",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "report passes evidence check",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "no unsupported claims",
+        "passed": true,
+        "detail": "0 found"
+      },
+      {
+        "name": "\u2265 10 sources",
+        "passed": true,
+        "detail": "15"
+      },
+      {
+        "name": "\u2264 15 sources",
+        "passed": true,
+        "detail": "15"
+      },
+      {
+        "name": "\u2265 3 reference source(s)",
+        "passed": true,
+        "detail": "6"
+      },
+      {
+        "name": "\u2265 3 community source(s)",
+        "passed": true,
+        "detail": "9"
+      },
+      {
+        "name": "cites 'Contentful'",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "does not cite 'Atlantic jackknife clam'",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "does not cite 'GSAT-7R'",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Contentful / integrations is supported",
+        "passed": true,
+        "detail": "supported"
+      },
+      {
+        "name": "Contentful / API options is supported",
+        "passed": true,
+        "detail": "supported"
+      },
+      {
+        "name": "Contentful / pricing is unknown",
+        "passed": true,
+        "detail": "unknown"
+      },
+      {
+        "name": "Directus / API options is community",
+        "passed": true,
+        "detail": "community"
+      },
+      {
+        "name": "nothing about Strapi marked supported",
+        "passed": true,
+        "detail": "0 supported"
+      },
+      {
+        "name": "nothing about Directus marked supported",
+        "passed": true,
+        "detail": "0 supported"
+      },
+      {
+        "name": "nothing about Payload CMS marked supported",
+        "passed": true,
+        "detail": "0 supported"
+      },
+      {
+        "name": "\u2264 0 conflicts",
+        "passed": true,
+        "detail": "0"
+      },
+      {
+        "name": "\u2265 2 supported claim(s)",
+        "passed": true,
+        "detail": "2"
+      },
+      {
+        "name": "entity coverage \u2265 100%",
+        "passed": true,
+        "detail": "100%"
+      },
+      {
+        "name": "\u2264 0 failed tool calls",
+        "passed": true,
+        "detail": "0"
+      }
+    ],
+    "metrics": {
+      "status": "completed",
+      "error": null,
+      "failed_stages": [],
+      "steps": 5,
+      "sources": 15,
+      "sources_by_kind": {
+        "reference": 6,
+        "community": 9
+      },
+      "entity_coverage": 1.0,
+      "cell_evidence_coverage": 0.68,
+      "supported_cells": 2,
+      "total_cells": 25,
+      "claims": 29,
+      "supported_claims": 2,
+      "contradicted_claims": 0,
+      "unknown_claims": 27,
+      "conflicts": 0,
+      "unsupported_claims": 0,
+      "unsupported_claim_rate": 0.0,
+      "report_saved": true,
+      "report_check_problems": [],
+      "tool_calls": 24,
+      "tool_errors": 0,
+      "tool_blocked": 0,
+      "http_requests": 47,
+      "fingerprint": "cd7ca5797faa8b2a"
+    }
+  },
+  {
+    "task": "cms-conflicting-document",
+    "passed": true,
+    "repeatable": true,
+    "checks": [
+      {
+        "name": "status is completed",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "report saved = True",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "report passes evidence check",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "no unsupported claims",
+        "passed": true,
+        "detail": "0 found"
+      },
+      {
+        "name": "\u2265 10 sources",
+        "passed": true,
+        "detail": "15"
+      },
+      {
+        "name": "\u2265 1 document source(s)",
+        "passed": true,
+        "detail": "1"
+      },
+      {
+        "name": "cites 'Contentful'",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "cites 'team-notes.md'",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "nothing about Strapi marked supported",
+        "passed": true,
+        "detail": "0 supported"
+      },
+      {
+        "name": "nothing about Directus marked supported",
+        "passed": true,
+        "detail": "0 supported"
+      },
+      {
+        "name": "nothing about Payload CMS marked supported",
+        "passed": true,
+        "detail": "0 supported"
+      },
+      {
+        "name": "conflict: Contentful founding year contradicted",
+        "passed": true,
+        "detail": "contradicted"
+      },
+      {
+        "name": "\u2264 0 failed tool calls",
+        "passed": true,
+        "detail": "0"
+      }
+    ],
+    "metrics": {
+      "status": "completed",
+      "error": null,
+      "failed_stages": [],
+      "steps": 5,
+      "sources": 15,
+      "sources_by_kind": {
+        "document": 1,
+        "reference": 6,
+        "community": 8
+      },
+      "entity_coverage": 1.0,
+      "cell_evidence_coverage": 0.68,
+      "supported_cells": 2,
+      "total_cells": 25,
+      "claims": 30,
+      "supported_claims": 2,
+      "contradicted_claims": 1,
+      "unknown_claims": 27,
+      "conflicts": 1,
+      "unsupported_claims": 0,
+      "unsupported_claim_rate": 0.0,
+      "report_saved": true,
+      "report_check_problems": [],
+      "tool_calls": 25,
+      "tool_errors": 0,
+      "tool_blocked": 0,
+      "http_requests": 47,
+      "fingerprint": "bbe5879386c24b47"
+    }
+  },
+  {
+    "task": "cms-overview",
+    "passed": true,
+    "repeatable": true,
+    "checks": [
+      {
+        "name": "status is completed",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "report saved = True",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "report passes evidence check",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "no unsupported claims",
+        "passed": true,
+        "detail": "0 found"
+      },
+      {
+        "name": "\u2265 4 sources",
+        "passed": true,
+        "detail": "15"
+      },
+      {
+        "name": "cites 'Headless content management system'",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Contentful / overview is supported",
+        "passed": true,
+        "detail": "supported"
+      },
+      {
+        "name": "Strapi / overview is supported",
+        "passed": true,
+        "detail": "supported"
+      },
+      {
+        "name": "entity coverage \u2265 100%",
+        "passed": true,
+        "detail": "100%"
+      },
+      {
+        "name": "\u2264 0 failed tool calls",
+        "passed": true,
+        "detail": "0"
+      }
+    ],
+    "metrics": {
+      "status": "completed",
+      "error": null,
+      "failed_stages": [],
+      "steps": 5,
+      "sources": 15,
+      "sources_by_kind": {
+        "reference": 6,
+        "community": 9
+      },
+      "entity_coverage": 1.0,
+      "cell_evidence_coverage": 1.0,
+      "supported_cells": 2,
+      "total_cells": 2,
+      "claims": 4,
+      "supported_claims": 3,
+      "contradicted_claims": 0,
+      "unknown_claims": 1,
+      "conflicts": 0,
+      "unsupported_claims": 0,
+      "unsupported_claim_rate": 0.0,
+      "report_saved": true,
+      "report_check_problems": [],
+      "tool_calls": 12,
+      "tool_errors": 0,
+      "tool_blocked": 0,
+      "http_requests": 25,
+      "fingerprint": "73b9bb69416acea0"
+    }
+  },
+  {
+    "task": "topic-question",
+    "passed": true,
+    "repeatable": true,
+    "checks": [
+      {
+        "name": "status is completed",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "report saved = True",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "report passes evidence check",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "no unsupported claims",
+        "passed": true,
+        "detail": "0 found"
+      },
+      {
+        "name": "\u2265 3 sources",
+        "passed": true,
+        "detail": "5"
+      },
+      {
+        "name": "cites 'Headless content management system'",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "\u2265 1 supported claim(s)",
+        "passed": true,
+        "detail": "3"
+      },
+      {
+        "name": "\u2265 1 failed tool call(s) logged",
+        "passed": true,
+        "detail": "1"
+      },
+      {
+        "name": "\u2264 1 failed tool calls",
+        "passed": true,
+        "detail": "1"
+      }
+    ],
+    "metrics": {
+      "status": "completed",
+      "error": null,
+      "failed_stages": [],
+      "steps": 5,
+      "sources": 5,
+      "sources_by_kind": {
+        "reference": 5
+      },
+      "entity_coverage": null,
+      "cell_evidence_coverage": null,
+      "supported_cells": 0,
+      "total_cells": 0,
+      "claims": 3,
+      "supported_claims": 3,
+      "contradicted_claims": 0,
+      "unknown_claims": 0,
+      "conflicts": 0,
+      "unsupported_claims": 0,
+      "unsupported_claim_rate": 0.0,
+      "report_saved": true,
+      "report_check_problems": [],
+      "tool_calls": 3,
+      "tool_errors": 1,
+      "tool_blocked": 0,
+      "http_requests": 3,
+      "fingerprint": "fbdbd24af91c8640"
+    }
+  },
+  {
+    "task": "partial-source-failure",
+    "passed": true,
+    "repeatable": true,
+    "checks": [
+      {
+        "name": "status is completed",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "report saved = True",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "report passes evidence check",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "no unsupported claims",
+        "passed": true,
+        "detail": "0 found"
+      },
+      {
+        "name": "\u2265 3 sources",
+        "passed": true,
+        "detail": "15"
+      },
+      {
+        "name": "Contentful / integrations is supported",
+        "passed": true,
+        "detail": "supported"
+      },
+      {
+        "name": "Nonexistent CMS 9000 / integrations is unknown",
+        "passed": true,
+        "detail": "unknown"
+      },
+      {
+        "name": "nothing about Nonexistent CMS 9000 marked supported",
+        "passed": true,
+        "detail": "0 supported"
+      },
+      {
+        "name": "\u2265 2 failed tool call(s) logged",
+        "passed": true,
+        "detail": "2"
+      }
+    ],
+    "metrics": {
+      "status": "completed",
+      "error": null,
+      "failed_stages": [],
+      "steps": 5,
+      "sources": 15,
+      "sources_by_kind": {
+        "reference": 7,
+        "community": 8
+      },
+      "entity_coverage": 0.5,
+      "cell_evidence_coverage": 0.5,
+      "supported_cells": 1,
+      "total_cells": 2,
+      "claims": 2,
+      "supported_claims": 1,
+      "contradicted_claims": 0,
+      "unknown_claims": 1,
+      "conflicts": 0,
+      "unsupported_claims": 0,
+      "unsupported_claim_rate": 0.0,
+      "report_saved": true,
+      "report_check_problems": [],
+      "tool_calls": 10,
+      "tool_errors": 2,
+      "tool_blocked": 0,
+      "http_requests": 18,
+      "fingerprint": "3e014d1276ac5592"
+    }
+  },
+  {
+    "task": "unsafe-and-unreachable-urls",
+    "passed": true,
+    "repeatable": true,
+    "checks": [
+      {
+        "name": "status is completed",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "report saved = True",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "report passes evidence check",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "no unsupported claims",
+        "passed": true,
+        "detail": "0 found"
+      },
+      {
+        "name": "\u2265 3 sources",
+        "passed": true,
+        "detail": "10"
+      },
+      {
+        "name": "\u2265 1 failed tool call(s) logged",
+        "passed": true,
+        "detail": "1"
+      },
+      {
+        "name": "\u2265 1 blocked call(s)",
+        "passed": true,
+        "detail": "1"
+      }
+    ],
+    "metrics": {
+      "status": "completed",
+      "error": null,
+      "failed_stages": [],
+      "steps": 5,
+      "sources": 10,
+      "sources_by_kind": {
+        "reference": 5,
+        "community": 5
+      },
+      "entity_coverage": null,
+      "cell_evidence_coverage": null,
+      "supported_cells": 0,
+      "total_cells": 0,
+      "claims": 3,
+      "supported_claims": 3,
+      "contradicted_claims": 0,
+      "unknown_claims": 0,
+      "conflicts": 0,
+      "unsupported_claims": 0,
+      "unsupported_claim_rate": 0.0,
+      "report_saved": true,
+      "report_check_problems": [],
+      "tool_calls": 6,
+      "tool_errors": 1,
+      "tool_blocked": 1,
+      "http_requests": 11,
+      "fingerprint": "3b4ecedeadf96936"
+    }
+  },
+  {
+    "task": "no-sources",
+    "passed": true,
+    "repeatable": true,
+    "checks": [
+      {
+        "name": "status is failed",
+        "passed": true,
+        "detail": "research failed: No sources retrieved (2 of 2 queries failed)"
+      },
+      {
+        "name": "research stage failed",
+        "passed": true,
+        "detail": "research"
+      },
+      {
+        "name": "error mentions 'No sources retrieved'",
+        "passed": true,
+        "detail": "research failed: No sources retrieved (2 of 2 queries failed)"
+      },
+      {
+        "name": "report saved = False",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "report passes evidence check",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "no unsupported claims",
+        "passed": true,
+        "detail": "0 found"
+      },
+      {
+        "name": "\u2265 2 failed tool call(s) logged",
+        "passed": true,
+        "detail": "2"
+      }
+    ],
+    "metrics": {
+      "status": "failed",
+      "error": "research failed: No sources retrieved (2 of 2 queries failed)",
+      "failed_stages": [
+        "research"
+      ],
+      "steps": 2,
+      "sources": 0,
+      "sources_by_kind": {},
+      "entity_coverage": null,
+      "cell_evidence_coverage": null,
+      "supported_cells": 0,
+      "total_cells": 0,
+      "claims": 0,
+      "supported_claims": 0,
+      "contradicted_claims": 0,
+      "unknown_claims": 0,
+      "conflicts": 0,
+      "unsupported_claims": 0,
+      "unsupported_claim_rate": null,
+      "report_saved": false,
+      "report_check_problems": [],
+      "tool_calls": 2,
+      "tool_errors": 2,
+      "tool_blocked": 0,
+      "http_requests": 2,
+      "fingerprint": "5d28a90f4498a814"
+    }
+  },
+  {
+    "task": "limit-then-resume",
+    "passed": true,
+    "repeatable": true,
+    "checks": [
+      {
+        "name": "first attempt: status is failed",
+        "passed": true,
+        "detail": "research failed: Tool call limit reached (2)"
+      },
+      {
+        "name": "first attempt: research stage failed",
+        "passed": true,
+        "detail": "research"
+      },
+      {
+        "name": "first attempt: error mentions 'Tool call limit reached (2)'",
+        "passed": true,
+        "detail": "research failed: Tool call limit reached (2)"
+      },
+      {
+        "name": "first attempt: report saved = False",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "first attempt: report passes evidence check",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "first attempt: no unsupported claims",
+        "passed": true,
+        "detail": "0 found"
+      },
+      {
+        "name": "after resume: status is completed",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "after resume: report saved = True",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "after resume: report passes evidence check",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "after resume: no unsupported claims",
+        "passed": true,
+        "detail": "0 found"
+      },
+      {
+        "name": "after resume: \u2265 3 sources",
+        "passed": true,
+        "detail": "15"
+      },
+      {
+        "name": "after resume: Contentful / integrations is supported",
+        "passed": true,
+        "detail": "supported"
+      },
+      {
+        "name": "after resume: \u2264 0 failed tool calls",
+        "passed": true,
+        "detail": "0"
+      },
+      {
+        "name": "after resume: plan not repeated",
+        "passed": true,
+        "detail": "1"
+      }
+    ],
+    "metrics": {
+      "status": "completed",
+      "error": null,
+      "failed_stages": [
+        "research"
+      ],
+      "steps": 6,
+      "sources": 15,
+      "sources_by_kind": {
+        "reference": 7,
+        "community": 8
+      },
+      "entity_coverage": 1.0,
+      "cell_evidence_coverage": 1.0,
+      "supported_cells": 1,
+      "total_cells": 1,
+      "claims": 1,
+      "supported_claims": 1,
+      "contradicted_claims": 0,
+      "unknown_claims": 0,
+      "conflicts": 0,
+      "unsupported_claims": 0,
+      "unsupported_claim_rate": 0.0,
+      "report_saved": true,
+      "report_check_problems": [],
+      "tool_calls": 10,
+      "tool_errors": 0,
+      "tool_blocked": 0,
+      "http_requests": 18,
+      "fingerprint": "5803748ee6413d25"
+    }
+  }
+]

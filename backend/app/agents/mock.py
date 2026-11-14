@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import re
 from datetime import UTC, datetime
+from typing import Literal
 from uuid import uuid4
 
 from app.schemas.research import (
@@ -186,8 +187,11 @@ class MockAnalyst:
         words = [w for w in re.findall(r"\w{4,}", question.text.casefold()) if w not in STOPWORDS]
         needed = min(2, len(words))
         pattern = _keyword_pattern(words) if words else None
-        found: list[Claim] = []
-        for source in sources:
+        # Rank every candidate sentence by how many distinct question keywords it contains,
+        # so "A headless content management system is..." beats a generic CMS sentence.
+        # Ties keep source order (reference sources first) and sentence order.
+        candidates: list[tuple[int, int, str, int, int, str]] = []
+        for order, source in enumerate(sources):
             text = contents.get(source.id, "")
             for start, end in iter_sentences(text):
                 sentence = text[start:end]
@@ -197,11 +201,17 @@ class MockAnalyst:
                     else set()
                 )
                 if needed and len(hits) >= needed:
-                    found.append(
-                        _extractive_claim(None, question.text, source.id, sentence, start, end)
-                    )
-                    if len(found) >= CLAIMS_PER_QUESTION:
-                        return found
+                    candidates.append((-len(hits), order, source.id, start, end, sentence))
+        candidates.sort(key=lambda c: (c[0], c[1], c[3]))
+        found: list[Claim] = []
+        seen: set[str] = set()
+        for _, _, source_id, start, end, sentence in candidates:
+            if sentence in seen:
+                continue
+            seen.add(sentence)
+            found.append(_extractive_claim(None, question.text, source_id, sentence, start, end))
+            if len(found) >= CLAIMS_PER_QUESTION:
+                break
         if not found:
             found.append(
                 Claim(
@@ -401,16 +411,14 @@ class MockWriter:
 
     @staticmethod
     def _cell(claims: list[Claim], cite) -> str:
-        if not claims:
-            return "Unknown"
-        supported = [c for c in claims if c.verification_status is VerificationStatus.SUPPORTED]
-        if supported:
+        status = cell_status(claims)
+        if status == "supported":
+            supported = [c for c in claims if c.verification_status is VerificationStatus.SUPPORTED]
             return "Supported " + _refs(supported, cite)
-        if any(c.verification_status is VerificationStatus.CONTRADICTED for c in claims):
+        if status == "conflicting":
             return "Conflicting " + _refs(claims, cite)
-        community = [c for c in claims if c.spans]
-        if community:
-            return "Unknown (community only) " + _refs(community, cite)
+        if status == "community":
+            return "Unknown (community only) " + _refs([c for c in claims if c.spans], cite)
         return "Unknown"
 
     @staticmethod
@@ -422,6 +430,20 @@ class MockWriter:
         if s.license:
             parts.append(md(s.license))
         return " · ".join(parts)
+
+
+CellStatus = Literal["supported", "conflicting", "community", "unknown"]
+
+
+def cell_status(claims: list[Claim]) -> CellStatus:
+    """Status of one comparison-matrix cell (entity x attribute) from its claims."""
+    if any(c.verification_status is VerificationStatus.SUPPORTED for c in claims):
+        return "supported"
+    if any(c.verification_status is VerificationStatus.CONTRADICTED for c in claims):
+        return "conflicting"
+    if any(c.spans for c in claims):
+        return "community"
+    return "unknown"
 
 
 def _refs(claims: list[Claim], cite) -> str:

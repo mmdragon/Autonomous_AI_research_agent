@@ -4,10 +4,11 @@ A local-first research assistant. It takes a scoped research task, plans the ste
 public sources (Wikipedia, Hacker News, URLs and documents you provide), maps claims to stored
 evidence, flags gaps and conflicts, and writes a Markdown report with source links.
 
-Status: **Phase 5 (frontend)**. Submit a research task in the browser, watch the plan and
+Status: **Phase 7 (evaluation)**. Submit a research task in the browser, watch the plan and
 stages run, and review the comparison matrix, findings, unknowns, conflicts, sources, report and
-activity log. Runs work offline by default (recorded sources, mock analysis). See
-[docs/PLAN.md](docs/PLAN.md).
+activity log. Everything runs offline and free by default (recorded sources, mock analysis), and
+a repeatable evaluation suite checks it (results below). Phase 6 (LangGraph / Claude) is optional
+and not started. See [docs/PLAN.md](docs/PLAN.md).
 
 ## Stack
 
@@ -160,6 +161,80 @@ curl -s localhost:8000/api/runs/<id>/report.md
 | GET | `/api/runs/{id}/report.md` | Latest report as a Markdown download |
 
 Interactive docs: http://localhost:8000/docs
+
+## Evaluation
+
+```bash
+cd backend && uv run python -m evals.run                # run and print results
+cd backend && uv run python -m evals.run --update-docs  # also refresh the results below
+```
+
+Eight tasks in [backend/evals/tasks.py](backend/evals/tasks.py), each with expected outcomes
+written from what the recorded sources actually say (for example: Wikipedia's Contentful
+article says it was founded in 2013; Wikipedia has no article on Strapi, Directus or Payload).
+Every task runs **twice**, each time in a fresh database, offline, with the mock analyst. A task
+passes only if all its checks hold and both runs produce the same outcome.
+
+| Task | Demonstrates |
+|---|---|
+| `cms-comparison` | Finding sources and building the 5 × 5 matrix; only Wikipedia-stated facts count as supported; irrelevant search hits are not cited |
+| `cms-conflicting-document` | An uploaded note ("founded in 2011") is used and flagged as contradicting Wikipedia |
+| `cms-overview` | Overview mode; a product with no article is still supported where an article names it |
+| `topic-question` | A free-form question answered from the most relevant article while one source fails |
+| `partial-source-failure` | Failed tool calls are logged, the run completes and the gap is marked unknown |
+| `unsafe-and-unreachable-urls` | A private-address URL is blocked before any request; an unreachable one is logged |
+| `no-sources` | A run with nothing to find fails cleanly at research, with no report |
+| `limit-then-resume` | The tool-call limit stops a run; resume finishes it without redoing the plan |
+
+**Metrics** (recomputed from the stored database, not taken from the stages' own summaries):
+- **Task completion**: tasks meant to complete that did complete.
+- **Unsupported-claim rate**: supported or contradicted claims that fail an independent
+  re-verification against the stored source text, or that lack a Wikipedia, URL or document
+  quote. Should be 0.
+- **Report evidence-check problems**: problems the report check finds in each saved report
+  (citations, URLs, quotes, dates, links). Should be 0.
+- **Repeatable**: both runs of a task produce the same sources, claims and report.
+- **Error scenarios handled**: the failure tasks behave exactly as expected.
+- **Per task**: sources stored, *entity coverage* (entities named in at least one stored source),
+  *cells with evidence* (matrix cells with any quote, including community-only), supported cells,
+  claims by status, tool calls (failed / blocked).
+
+The pytest suite runs the evaluation too (`tests/test_evals.py`), and also checks that it catches
+a broken agent: a verifier that marks everything supported, and a writer that adds a fake source.
+Per-check detail: [docs/evaluation.md](docs/evaluation.md).
+
+### Results
+
+<!-- eval:start -->
+**8 of 8 tasks passed** (91 of 91 checks; each task run twice, offline, mock analysis).
+
+| Metric | Result |
+|---|---|
+| Task completion (tasks meant to complete) | 7 of 7 |
+| Unsupported-claim rate | 0 of 16 supported/contradicted claims (0%) |
+| Report evidence-check problems | 0 |
+| Repeatable (identical outcome on rerun) | 8 of 8 |
+| Error scenarios handled as expected | 5 of 5 |
+
+| Task | Result | Sources | Entity coverage | Cells with evidence | Supported cells | Claims (S / C / U) | Tool calls (failed / blocked) |
+|---|---|---|---|---|---|---|---|
+| `cms-comparison` | pass: completed | 15 | 100% | 68% | 2 of 25 | 2 / 0 / 27 | 24 (0 / 0) |
+| `cms-conflicting-document` | pass: completed | 15 | 100% | 68% | 2 of 25 | 2 / 1 / 27 | 25 (0 / 0) |
+| `cms-overview` | pass: completed | 15 | 100% | 100% | 2 of 2 | 3 / 0 / 1 | 12 (0 / 0) |
+| `topic-question` | pass: completed | 5 | — | — | — | 3 / 0 / 0 | 3 (1 / 0) |
+| `partial-source-failure` | pass: completed | 15 | 50% | 50% | 1 of 2 | 1 / 0 / 1 | 10 (2 / 0) |
+| `unsafe-and-unreachable-urls` | pass: completed | 10 | — | — | — | 3 / 0 / 0 | 6 (1 / 1) |
+| `no-sources` | pass: failed (research) | 0 | — | — | — | 0 / 0 / 0 | 2 (2 / 0) |
+| `limit-then-resume` | pass: completed | 15 | 100% | 100% | 1 of 1 | 1 / 0 / 0 | 10 (0 / 0) |
+<!-- eval:end -->
+
+**Reading the results.** The agent is reliable about *what it claims*: no unsupported claims, no
+report problems, identical reruns. It is limited in *what it can find*: in the main comparison
+only 2 of 25 cells are supported, because Wikipedia has no articles for most of these products
+and the mock analyst only quotes, never infers. Most cells have community-only evidence (Hacker
+News) or none, and the report says so instead of filling the gaps. Better coverage needs more
+sources (your URLs or documents) or a model-based analyst (Phase 6), with the same verifier and
+report check in front of it.
 
 ## Checks
 
